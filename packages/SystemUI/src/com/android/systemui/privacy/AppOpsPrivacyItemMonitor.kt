@@ -96,7 +96,7 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
                     return
                 }
                 // Hide incoming chip from sense caller package
-                if (packageName == "co.aospa.sense") {
+                if (packageName == "org.cubeapp.face") {
                     return
                 }
                 if (userTracker.userProfiles.any { it.id == UserHandle.getUserId(uid) } ||
@@ -224,7 +224,7 @@ class AppOpsPrivacyItemMonitor @Inject constructor(
             else -> return null
         }
         // Hide incoming chip from sense caller package
-        if (appOpItem.packageName == "co.aospa.sense") {
+        if (appOpItem.packageName == "org.cubeapp.face") {
             return null
         }
         val app = PrivacyApplication(appOpItem.packageName, appOpItem.uid)

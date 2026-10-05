@@ -672,7 +672,10 @@ public class FaceService extends SystemService {
             final List<ServiceProvider> providers = new ArrayList<>();
             FaceSensorPropertiesInternal props = new FaceSensorPropertiesInternal(
                     SenseProvider.DEVICE_ID,
-                    SensorProperties.STRENGTH_WEAK,
+                    // CubeOS: a camera-only face match is spoofable by photos and videos, so it
+                    // is a Class 1 (convenience) biometric: keyguard only, never BiometricPrompt
+                    // or Keystore auth-bound keys.
+                    SensorProperties.STRENGTH_CONVENIENCE,
                     1, /** maxEnrollmentsPerUser **/
                     new ArrayList(),
                     FaceSensorProperties.TYPE_RGB,

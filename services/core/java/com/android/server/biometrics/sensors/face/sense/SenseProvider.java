@@ -103,9 +103,11 @@ public class SenseProvider implements ServiceProvider {
 
     private static final String TAG = "SenseProvider";
 
-    private static final String BIND_SENSE_ACTION = "co.aospa.sense.BIND";
-    private static final String PACKAGE_NAME = "co.aospa.sense";
-    private static final String SERVICE_NAME = "co.aospa.sense.SenseService";
+    // CubeOS: the face "HAL" is Face Unlock (org.cubeapp.face, packages/apps/CubeOSApps/face),
+    // an open on-device engine; no vendor face libraries are involved.
+    private static final String BIND_SENSE_ACTION = "org.cubeapp.face.SENSE_BIND";
+    private static final String PACKAGE_NAME = "org.cubeapp.face";
+    private static final String SERVICE_NAME = "org.cubeapp.face.sense.SenseHalService";
 
     public static final int DEVICE_ID = 1008;
     private static final int ENROLL_TIMEOUT_SEC = 75;
