@@ -71,6 +71,8 @@ class TakeScreenshotExecutorTest : SysuiTestCase() {
             notificationControllerFactory,
             headlessHandler,
             focusedDisplayRepository,
+            mContext,
+            mock<ScreenshotSoundController>(),
         )
 
     @Before

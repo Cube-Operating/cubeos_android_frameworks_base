@@ -16,6 +16,7 @@
 
 package com.android.systemui.screenshot
 
+import android.content.Context
 import android.net.Uri
 import android.os.Trace
 import android.util.Log
@@ -85,6 +86,8 @@ constructor(
     private val screenshotNotificationControllerFactory: ScreenshotNotificationsController.Factory,
     private val headlessScreenshotHandler: HeadlessScreenshotHandler,
     private val focusedDisplayRepository: FocusedDisplayRepository,
+    @Application private val context: Context,
+    private val screenshotSoundController: ScreenshotSoundController,
 ) : TakeScreenshotExecutor {
     private val displays = displayRepository.displays
     private var screenshotController: InteractiveScreenshotHandler? = null
@@ -103,7 +106,9 @@ constructor(
     ) {
         if (screenshotMultidisplayFocusChange()) {
             val display = getDisplayToScreenshot(screenshotRequest)
-            val screenshotHandler = getScreenshotController(display)
+            val screenshotHandler =
+                if (withoutPreview(display.displayId)) headlessWithShutter()
+                else getScreenshotController(display)
             dispatchToController(
                 screenshotHandler,
                 ScreenshotData.fromRequest(screenshotRequest, display.displayId),
@@ -120,8 +125,10 @@ constructor(
             displays.forEach { display ->
                 val displayId = display.displayId
                 var screenshotHandler: ScreenshotHandler =
-                    if (displayId == Display.DEFAULT_DISPLAY) {
+                    if (displayId == Display.DEFAULT_DISPLAY && !withoutPreview(displayId)) {
                         getScreenshotController(display)
+                    } else if (displayId == Display.DEFAULT_DISPLAY) {
+                        headlessWithShutter()
                     } else {
                         headlessScreenshotHandler
                     }
@@ -260,6 +267,20 @@ constructor(
         mainScope.launch {
             executeScreenshots(screenshotRequest, { uri -> onSaved.accept(uri) }, requestCallback)
         }
+    }
+
+    /**
+     * CubeOS: with config_cubeScreenshotPreview off, the default display's screenshots are saved
+     * without SystemUI's preview, so Cube Screenshots' own floating thumbnail and editor are the
+     * only UI. The shutter still sounds.
+     */
+    private fun withoutPreview(displayId: Int): Boolean =
+        displayId == Display.DEFAULT_DISPLAY &&
+            !context.resources.getBoolean(R.bool.config_cubeScreenshotPreview)
+
+    private fun headlessWithShutter(): ScreenshotHandler {
+        screenshotSoundController.playScreenshotSoundAsync()
+        return headlessScreenshotHandler
     }
 
     private fun getScreenshotController(display: Display): InteractiveScreenshotHandler {
