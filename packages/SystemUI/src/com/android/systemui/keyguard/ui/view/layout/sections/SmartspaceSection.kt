@@ -127,6 +127,14 @@ constructor(
                 ConstraintSet.START,
                 dateWeatherPaddingStart,
             )
+            // CubeOS: the date sits centred under the centred clock, as on iOS.
+            connect(
+                sharedR.id.date_smartspace_view,
+                ConstraintSet.END,
+                ConstraintSet.PARENT_ID,
+                ConstraintSet.END,
+                dateWeatherPaddingStart,
+            )
 
             // migrate addSmartspaceView from KeyguardClockSwitchController
             constrainHeight(sharedR.id.bc_smartspace_view, ConstraintSet.WRAP_CONTENT)

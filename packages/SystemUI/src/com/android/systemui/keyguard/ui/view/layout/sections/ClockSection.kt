@@ -215,16 +215,14 @@ constructor(
                 customR.id.lockscreen_clock_view,
                 context.resources.getDimensionPixelSize(customR.dimen.small_clock_height),
             )
-            connect(
-                customR.id.lockscreen_clock_view,
-                START,
-                PARENT_ID,
-                START,
+            // CubeOS: the lock-screen clock is centred, as on iOS (it hugged the start edge).
+            val smallClockSideMargin =
                 context.resources.getDimensionPixelSize(customR.dimen.clock_padding_start) +
                     context.resources.getDimensionPixelSize(
                         customR.dimen.status_view_margin_horizontal
-                    ),
-            )
+                    )
+            connect(customR.id.lockscreen_clock_view, START, PARENT_ID, START, smallClockSideMargin)
+            connect(customR.id.lockscreen_clock_view, END, PARENT_ID, END, smallClockSideMargin)
             val smallClockTopMargin = keyguardClockViewModel.getSmallClockTopMargin()
             create(R.id.small_clock_guideline_top, ConstraintSet.HORIZONTAL_GUIDELINE)
             setGuidelineBegin(R.id.small_clock_guideline_top, smallClockTopMargin)
