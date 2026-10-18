@@ -530,6 +530,8 @@ public class DisplayPolicy {
                         mService.mPowerManagerInternal.setPowerBoost(
                                 Boost.INTERACTION, duration);
                     }
+                    // CubeOS: MediaTek vendors ignore INTERACTION; send their own hint too.
+                    MtkPowerBoost.get().boost(duration);
                 }
 
                 @Override
@@ -548,6 +550,7 @@ public class DisplayPolicy {
                     if (listener != null) {
                         listener.onTouchStart();
                     }
+                    MtkPowerBoost.get().boost(0);
                 }
 
                 @Override
