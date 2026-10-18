@@ -21,14 +21,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
-    <!-- b/172360102: Setting visibility to gone for now, in order to see if there are many
-         issues with removing the alpha characters. -->
+    <!-- CubeOS: the letters under the digit (ABC, DEF ...), as on the iOS passcode pad; the
+         CubeKeyguard overlay styles them. AOSP hid them (b/172360102). -->
     <TextView
         android:id="@+id/klondike_text"
         style="@style/Widget.TextView.NumPadKey.Klondike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         />
 </merge>
 
