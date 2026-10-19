@@ -211,7 +211,31 @@ public class NotificationBackgroundView extends View implements Dumpable,
             }
             drawable.setBounds(left, top, right, bottom);
             drawable.draw(canvas);
+            if (drawable == mBackground) drawGlass(canvas, left, top, right, bottom);
         }
+    }
+
+    // CubeOS glass: a soft sheen across the top and a fine white rim, bright at the top and fading
+    // toward the bottom, following the card's corners.
+    private final android.graphics.Paint mRimPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+    private final android.graphics.Paint mSheenPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+    private final android.graphics.Path mGlassPath = new android.graphics.Path();
+    private final android.graphics.RectF mGlassRect = new android.graphics.RectF();
+
+    private void drawGlass(Canvas canvas, int left, int top, int right, int bottom) {
+        if (bottom - top < 2) return;
+        float stroke = getResources().getDisplayMetrics().density * 0.8f;
+        mGlassRect.set(left + stroke / 2f, top + stroke / 2f, right - stroke / 2f, bottom - stroke / 2f);
+        mGlassPath.reset();
+        mGlassPath.addRoundRect(mGlassRect, mCornerRadii, android.graphics.Path.Direction.CW);
+        mSheenPaint.setShader(new android.graphics.LinearGradient(0, top, 0, top + Math.min(bottom - top, 120f * getResources().getDisplayMetrics().density),
+                0x1FFFFFFF, 0x00FFFFFF, android.graphics.Shader.TileMode.CLAMP));
+        canvas.drawPath(mGlassPath, mSheenPaint);
+        mRimPaint.setStyle(android.graphics.Paint.Style.STROKE);
+        mRimPaint.setStrokeWidth(stroke);
+        mRimPaint.setShader(new android.graphics.LinearGradient(0, top, 0, bottom,
+                0x66FFFFFF, 0x14FFFFFF, android.graphics.Shader.TileMode.CLAMP));
+        canvas.drawPath(mGlassPath, mRimPaint);
     }
 
     @Override
@@ -281,7 +305,8 @@ public class NotificationBackgroundView extends View implements Dumpable,
 
     public void setTint(int tintColor) {
         Drawable baseLayer = getBaseBackgroundLayer();
-        baseLayer.mutate().setTintMode(PorterDuff.Mode.SRC_ATOP);
+        // CubeOS: SRC keeps the tint's own alpha (glass notifications are translucent).
+        baseLayer.mutate().setTintMode(PorterDuff.Mode.SRC);
         baseLayer.setTint(tintColor);
         mTintColor = tintColor;
         setStatefulColors();

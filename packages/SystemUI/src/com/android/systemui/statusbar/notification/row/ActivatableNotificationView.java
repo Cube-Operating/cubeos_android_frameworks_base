@@ -123,8 +123,11 @@ public abstract class ActivatableNotificationView extends ExpandableOutlineView 
     }
 
     private void updateColors() {
-        mNormalColor = Utils.getColorAttrDefaultColor(mContext,
-                com.android.internal.R.attr.materialColorSurfaceContainerHigh);
+        // CubeOS: glass notifications, translucent so the wallpaper glows through (the rim and
+        // sheen are drawn by NotificationBackgroundView).
+        mNormalColor = androidx.core.graphics.ColorUtils.setAlphaComponent(
+                Utils.getColorAttrDefaultColor(mContext,
+                        com.android.internal.R.attr.materialColorSurfaceContainerHigh), 0xB8);
         mTintedRippleColor = mContext.getColor(
                 R.color.notification_ripple_tinted_color);
         mNormalRippleColor = mContext.getColor(
