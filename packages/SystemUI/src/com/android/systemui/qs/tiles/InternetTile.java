@@ -130,9 +130,9 @@ public class InternetTile extends QSTileImpl<QSTile.BooleanState> {
 
     @Override
     protected void handleClick(@Nullable Expandable expandable) {
-        mHandler.post(() -> mInternetDialogManager.create(true,
-                mAccessPointController.canConfigMobileData(),
-                mAccessPointController.canConfigWifi(), expandable));
+        // CubeOS: the tile opens CubeOS Settings' Wi-Fi page (the one Settings app), not the
+        // stock Internet dialog. The icon still toggles Wi-Fi (handleSecondaryClick).
+        mActivityStarter.postStartActivityDismissingKeyguard(WIFI_SETTINGS, 0);
     }
 
     @Override

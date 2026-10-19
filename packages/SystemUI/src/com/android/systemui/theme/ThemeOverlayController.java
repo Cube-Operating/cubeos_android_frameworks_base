@@ -774,11 +774,37 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
         return true;
     }
 
+    /** CubeOS blue: the system palette's seed when no theme has picked one. */
+    private static final String CUBE_PALETTE = "0A84FF";
+
+    /**
+     * THEME_CUSTOMIZATION_OVERLAY_PACKAGES as the theme code should see it. CubeOS: until a
+     * theme (Cube Themes, a preset) picks a palette, the system colours come from CubeOS's own
+     * palette, not from the wallpaper (which turned the shade, tiles and dialogs pink/salmon).
+     */
+    private String cubeThemeJson(int user) {
+        final String json = mSecureSettings.getStringForUser(
+                Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES, user);
+        try {
+            final JSONObject o = TextUtils.isEmpty(json) ? new JSONObject() : new JSONObject(json);
+            if (o.has(OVERLAY_CATEGORY_SYSTEM_PALETTE)
+                    && COLOR_SOURCE_PRESET.equals(o.optString(OVERLAY_COLOR_SOURCE))) {
+                return json;
+            }
+            o.put(OVERLAY_CATEGORY_SYSTEM_PALETTE, CUBE_PALETTE);
+            o.put(OVERLAY_COLOR_SOURCE, COLOR_SOURCE_PRESET);
+            if (!o.has(ThemeOverlayApplier.OVERLAY_CATEGORY_THEME_STYLE)) {
+                o.put(ThemeOverlayApplier.OVERLAY_CATEGORY_THEME_STYLE, "TONAL_SPOT");
+            }
+            return o.toString();
+        } catch (JSONException e) {
+            return json;
+        }
+    }
+
     private void updateThemeOverlays() {
         final int currentUser = mUserTracker.getUserId();
-        final String overlayPackageJson = mSecureSettings.getStringForUser(
-                Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES,
-                currentUser);
+        final String overlayPackageJson = cubeThemeJson(currentUser);
         if (DEBUG) Log.d(TAG, "updateThemeOverlays. Setting: " + overlayPackageJson);
         final Map<String, OverlayIdentifier> categoryToPackage = new ArrayMap<>();
         if (!TextUtils.isEmpty(overlayPackageJson)) {
@@ -893,9 +919,7 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
                 Style.MONOCHROMATIC));
 
         @Style.Type int style = mThemeStyle;
-        final String overlayPackageJson = mSecureSettings.getStringForUser(
-                Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES,
-                mUserTracker.getUserId());
+        final String overlayPackageJson = cubeThemeJson(mUserTracker.getUserId());
         if (!TextUtils.isEmpty(overlayPackageJson)) {
             try {
                 JSONObject object = new JSONObject(overlayPackageJson);

@@ -139,6 +139,13 @@ public class BluetoothTile extends QSTileImpl<BooleanState> {
     }
 
     private void handleClickEvent(@Nullable Expandable expandable) {
+        // CubeOS: the tile opens CubeOS Settings' Bluetooth page, not the stock device dialog.
+        // The icon still toggles Bluetooth (handleSecondaryClick).
+        if (true) {
+            mActivityStarter.postStartActivityDismissingKeyguard(
+                    new Intent(Settings.ACTION_BLUETOOTH_SETTINGS), 0);
+            return;
+        }
         if (mFeatureFlags.isEnabled(Flags.BLUETOOTH_QS_TILE_DIALOG)) {
             mDialogViewModel.showDialog(expandable);
         } else {

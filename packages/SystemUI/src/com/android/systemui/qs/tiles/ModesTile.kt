@@ -17,6 +17,7 @@
 package com.android.systemui.qs.tiles
 
 import android.content.Intent
+import android.provider.Settings
 import android.os.Handler
 import android.os.Looper
 import android.service.quicksettings.Tile
@@ -105,8 +106,10 @@ constructor(
         }
     }
 
-    override fun handleClick(expandable: Expandable?) = runBlocking {
-        userActionInteractor.handleClick(expandable)
+    // CubeOS: the tile opens CubeOS Settings' Focus page (the one Settings app), not the stock
+    // modes dialog. The icon still toggles Do Not Disturb (handleSecondaryClick).
+    override fun handleClick(expandable: Expandable?) {
+        mActivityStarter.postStartActivityDismissingKeyguard(Intent(Settings.ACTION_ZEN_MODE_SETTINGS), 0)
     }
 
     override fun handleSecondaryClick(expandable: Expandable?) = runBlocking {
