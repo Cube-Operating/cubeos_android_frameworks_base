@@ -84,6 +84,10 @@ public interface NotificationInterruptStateProvider {
          */
         FSI_KEYGUARD_SHOWING(true),
         /**
+         * CubeOS: an incoming call covers the screen even while the phone is in use.
+         */
+        FSI_INCOMING_CALL(true),
+        /**
          * The notification is expected to show heads-up, so FSI is not needed.
          */
         NO_FSI_EXPECTED_TO_HUN(false),

@@ -27,6 +27,7 @@ import com.android.systemui.statusbar.notification.interruption.FullScreenIntent
 import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.FSI_DEVICE_NOT_PROVISIONED
 import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.FSI_KEYGUARD_OCCLUDED
 import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.FSI_KEYGUARD_SHOWING
+import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.FSI_INCOMING_CALL
 import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.FSI_LOCKED_SHADE
 import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.FSI_USER_SETUP_INCOMPLETE
 import com.android.systemui.statusbar.notification.interruption.FullScreenIntentDecisionProvider.DecisionImpl.NO_FSI_EXPECTED_TO_HUN
@@ -100,6 +101,7 @@ class FullScreenIntentDecisionProvider(
         FSI_DEVICE_NOT_INTERACTIVE(true, "device is not interactive"),
         FSI_DEVICE_DREAMING(true, "device is dreaming"),
         FSI_KEYGUARD_SHOWING(true, "keyguard is showing"),
+        FSI_INCOMING_CALL(true, "incoming call covers the screen (CubeOS)"),
         NO_FSI_EXPECTED_TO_HUN(false, "expected to heads-up instead"),
         FSI_KEYGUARD_OCCLUDED(true, "keyguard is occluded"),
         FSI_LOCKED_SHADE(true, "locked shade"),
@@ -183,6 +185,14 @@ class FullScreenIntentDecisionProvider(
             return FSI_KEYGUARD_SHOWING
         }
 
+        // CubeOS: a ringing call takes over the screen even while the phone is in use, as on
+        // iPhone, for every calling app (Phone, CubeLine, …), instead of becoming a banner (Cube
+        // Island). Only incoming-call notifications (CallStyle.forIncomingCall): an ongoing call's
+        // notification must not reopen its screen. Do Not Disturb still applies (above).
+        if (isIncomingCall(notification)) {
+            return FSI_INCOMING_CALL
+        }
+
         if (couldHeadsUp) {
             return NO_FSI_EXPECTED_TO_HUN
         }
@@ -205,4 +215,9 @@ class FullScreenIntentDecisionProvider(
 
         return NO_FSI_NO_HUN_OR_KEYGUARD
     }
+
+    private fun isIncomingCall(notification: android.app.Notification): Boolean =
+        notification.isStyle(android.app.Notification.CallStyle::class.java) &&
+            notification.extras.getInt(android.app.Notification.EXTRA_CALL_TYPE) ==
+                android.app.Notification.CallStyle.CALL_TYPE_INCOMING
 }

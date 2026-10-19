@@ -344,6 +344,15 @@ public class NotificationInterruptStateProviderImpl implements NotificationInter
                     suppressedByDND);
         }
 
+        // CubeOS: a ringing call (CallStyle.forIncomingCall) takes over the screen even while the
+        // phone is in use, for every calling app, instead of becoming a banner (Cube Island).
+        if (sbn.getNotification().isStyle(Notification.CallStyle.class)
+                && sbn.getNotification().extras.getInt(Notification.EXTRA_CALL_TYPE)
+                        == Notification.CallStyle.CALL_TYPE_INCOMING) {
+            return getDecisionGivenSuppression(FullScreenIntentDecision.FSI_INCOMING_CALL,
+                    suppressedByDND);
+        }
+
         // If the notification should HUN, then we don't need FSI
         // Because this is not the heads-up decision-making point, and checking whether it would
         // HUN, don't log this specific check.
