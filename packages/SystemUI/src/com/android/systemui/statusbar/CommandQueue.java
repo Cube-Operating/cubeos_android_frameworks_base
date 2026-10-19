@@ -604,7 +604,21 @@ public class CommandQueue extends IStatusBar.Stub implements
         final int disabled1 = getDisabled1(mDisplayTracker.getDefaultDisplayId());
         final int disabled2 = getDisabled2(mDisplayTracker.getDefaultDisplayId());
         return (disabled1 & StatusBarManager.DISABLE_EXPAND) == 0
-                && (disabled2 & StatusBarManager.DISABLE2_NOTIFICATION_SHADE) == 0;
+                && (disabled2 & StatusBarManager.DISABLE2_NOTIFICATION_SHADE) == 0
+                && !cubeOwnsPullDown();
+    }
+
+    /**
+     * CubeOS: Cube Home's control service draws the Notification and Control Centers; while it is
+     * enabled the stock shade never opens by a pull (one that started just below the status bar
+     * still reached it). If the service is off, the stock shade works as before.
+     */
+    private boolean cubeOwnsPullDown() {
+        final String services = android.provider.Settings.Secure.getString(
+                mContext.getContentResolver(),
+                android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+        return services != null
+                && services.contains("org.cubeapp.launcher/org.cubeapp.launcher.control.CubeControlService");
     }
 
     @Override
