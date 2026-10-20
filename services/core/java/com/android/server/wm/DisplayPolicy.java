@@ -2332,7 +2332,10 @@ public class DisplayPolicy {
             // To further allow the pull-down-from-the-top gesture to pull down the notification
             // shade as a consistent motion, we reroute the touch events here from the currently
             // touched window to the status bar after making it visible.
-            if (swipeTarget == mStatusBar) {
+            // CubeOS: while Cube Home's Control and Notification Centers own the pull-down,
+            // its own window follows the finger; handing the gesture to the stock status bar
+            // cancelled that pull half way.
+            if (swipeTarget == mStatusBar && !cubeOwnsPullDown()) {
                 final boolean transferred = mStatusBar.transferTouch();
                 if (!transferred) {
                     Slog.i(TAG, "Could not transfer touch to the status bar");
@@ -2344,6 +2347,38 @@ public class DisplayPolicy {
         } else {
             mImmersiveModeConfirmation.confirmCurrentPrompt();
         }
+    }
+
+    /**
+     * CubeOS: Cube Home's control service (its panels replace the shade) is switched on. Read
+     * from a cache kept by a settings observer: this runs under the window manager lock.
+     */
+    private volatile Boolean mCubeOwnsPullDown;
+
+    private boolean cubeOwnsPullDown() {
+        Boolean owns = mCubeOwnsPullDown;
+        if (owns == null) {
+            final android.content.ContentResolver cr = mContext.getContentResolver();
+            final android.net.Uri uri = android.provider.Settings.Secure.getUriFor(
+                    android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            cr.registerContentObserver(uri, false, new android.database.ContentObserver(mHandler) {
+                @Override
+                public void onChange(boolean selfChange) {
+                    mCubeOwnsPullDown = readCubeOwnsPullDown();
+                }
+            }, android.os.UserHandle.USER_ALL);
+            owns = readCubeOwnsPullDown();
+            mCubeOwnsPullDown = owns;
+        }
+        return owns;
+    }
+
+    private boolean readCubeOwnsPullDown() {
+        final String services = android.provider.Settings.Secure.getString(
+                mContext.getContentResolver(),
+                android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+        return services != null
+                && services.contains("org.cubeapp.launcher/org.cubeapp.launcher.control.CubeControlService");
     }
 
     boolean isKeyguardShowing() {
