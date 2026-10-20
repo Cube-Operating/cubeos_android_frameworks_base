@@ -1738,7 +1738,9 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
 
     @ClockSize
     private int computeDesiredClockSizeForSingleShade() {
-        if (hasVisibleNotifications()) {
+        // CubeOS: the always-on display keeps the large clock, with notification icons below it;
+        // the lock screen still shrinks it to make room for the notifications themselves.
+        if (hasVisibleNotifications() && !isOnAod()) {
             return SMALL;
         }
         return LARGE;
