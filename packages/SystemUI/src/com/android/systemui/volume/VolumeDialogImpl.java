@@ -149,6 +149,7 @@ import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.DevicePostureController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.util.AlphaTintDrawableWrapper;
+import com.android.systemui.util.CubeSpringInterpolator;
 import com.android.systemui.util.RoundedCornerProgressDrawable;
 import com.android.systemui.util.settings.SecureSettings;
 import com.android.systemui.volume.domain.interactor.VolumeDialogInteractor;
@@ -660,12 +661,13 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
                         (isWindowGravityLeft() ? -1 : 1) * mDialogView.getWidth() / 2.0f);
             }
             mDialogView.setAlpha(0);
+            // CubeOS: the panel arrives on Cube Motion's settle spring.
             mDialogView.animate()
                     .alpha(1)
                     .translationX(0)
-                    .setDuration(mDialogShowAnimationDurationMs)
+                    .setDuration(CubeSpringInterpolator.SETTLE_DURATION_MS)
                     .setListener(getJankListener(getDialogView(), TYPE_SHOW, mDialogTimeoutMillis))
-                    .setInterpolator(new SystemUIInterpolators.LogDecelerateInterpolator())
+                    .setInterpolator(CubeSpringInterpolator.settle())
                     .withEndAction(() -> {
                         if (!Prefs.getBoolean(mContext, Prefs.Key.TOUCHED_RINGER_TOGGLE, false)) {
                             if (mRingerIcon != null) {
@@ -1851,10 +1853,11 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
         }
         mDialogView.setTranslationX(0);
         mDialogView.setAlpha(1);
+        // CubeOS: the panel leaves on Cube Motion's dismiss spring.
         ViewPropertyAnimator animator = mDialogView.animate()
                 .alpha(0)
-                .setDuration(mDialogHideAnimationDurationMs)
-                .setInterpolator(new SystemUIInterpolators.LogAccelerateInterpolator())
+                .setDuration(CubeSpringInterpolator.DISMISS_DURATION_MS)
+                .setInterpolator(CubeSpringInterpolator.dismiss())
                 .withEndAction(() -> mHandler.postDelayed(() -> {
                     if (mController != null) {
                         mController.notifyVisible(false);
@@ -1879,7 +1882,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
         }
 
         animator.setListener(getJankListener(getDialogView(), TYPE_DISMISS,
-                mDialogHideAnimationDurationMs)).start();
+                CubeSpringInterpolator.DISMISS_DURATION_MS)).start();
 
         checkODICaptionsTooltip(true);
         synchronized (mSafetyWarningLock) {
