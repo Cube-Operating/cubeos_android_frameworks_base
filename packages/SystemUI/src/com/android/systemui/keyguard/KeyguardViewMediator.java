@@ -86,6 +86,9 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.Trace;
 import android.os.UserHandle;
+import android.os.Vibrator;
+import android.os.VibrationEffect;
+import android.os.VibrationAttributes;
 import android.os.UserManager;
 import android.provider.DeviceConfig;
 import android.provider.Settings;
@@ -1845,7 +1848,7 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
             }
 
             if (mPendingLock) {
-                playSounds(true);
+                lockFeedback(offReason);
             }
         }
 
@@ -2954,6 +2957,18 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
 
     private void playSounds(boolean locked) {
         playSound(locked ? mLockSoundId : mUnlockSoundId);
+    }
+
+    /**
+     * CubeOS: locking with the Power button is felt, not heard: one crisp tick (Cube Haptics'
+     * snap, 14 ms) instead of the lock sound. A screen that times out locks silently.
+     */
+    private void lockFeedback(int offReason) {
+        if (offReason != WindowManagerPolicyConstants.OFF_BECAUSE_OF_USER) return;
+        Vibrator vibrator = mContext.getSystemService(Vibrator.class);
+        if (vibrator == null || !vibrator.hasVibrator()) return;
+        vibrator.vibrate(VibrationEffect.createOneShot(14, VibrationEffect.DEFAULT_AMPLITUDE),
+                VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH));
     }
 
     private void playSound(int soundId) {
