@@ -103,6 +103,9 @@ public interface VolumeModule {
     @Binds
     VolumePanelComponentFactory bindVolumePanelComponentFactory(VolumePanelComponent.Factory impl);
 
+    /** CubeOS: use CubeVolumeDialog instead of Android's volume panel. */
+    boolean CUBE_VOLUME = true;
+
     /**  */
     @Provides
     static VolumeDialog provideVolumeDialog(
@@ -126,6 +129,9 @@ public interface VolumeModule {
             VolumeDialogInteractor interactor) {
         if (Flags.volumeRedesign()) {
             return volumeDialogProvider.get();
+        } else if (CUBE_VOLUME) {
+            // CubeOS: the elastic volume pill beside the volume buttons (volume/cube/).
+            return new com.android.systemui.volume.cube.CubeVolumeDialog(context, volumeDialogController);
         } else {
             VolumeDialogImpl impl = new VolumeDialogImpl(
                     context,
