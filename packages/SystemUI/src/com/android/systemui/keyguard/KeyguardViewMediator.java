@@ -1847,9 +1847,9 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
                 setPendingLock(true);
             }
 
-            if (mPendingLock) {
-                lockFeedback(offReason);
-            }
+            // CubeOS: a power-button sleep is always felt, not heard — a single tick, whether the
+            // keyguard locks now, locks later, or just resets because it was already showing.
+            lockFeedback(offReason);
         }
 
         mUpdateMonitor.dispatchStartedGoingToSleep(offReason);
