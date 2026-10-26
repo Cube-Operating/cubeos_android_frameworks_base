@@ -2960,15 +2960,27 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
     }
 
     /**
-     * CubeOS: locking with the Power button is felt, not heard: one crisp tick (Cube Haptics'
-     * snap, 14 ms) instead of the lock sound. A screen that times out locks silently.
+     * CubeOS: locking with the Power button is felt, not heard: one crisp tick instead of the lock
+     * sound. A screen that times out locks silently. The Cube Phone's vibrator has no amplitude
+     * control and only plays predefined effects, so a short oneshot is ignored — use a predefined
+     * HEAVY_CLICK (with a longer oneshot as a fallback for richer motors).
      */
     private void lockFeedback(int offReason) {
         if (offReason != WindowManagerPolicyConstants.OFF_BECAUSE_OF_USER) return;
         Vibrator vibrator = mContext.getSystemService(Vibrator.class);
         if (vibrator == null || !vibrator.hasVibrator()) return;
-        vibrator.vibrate(VibrationEffect.createOneShot(14, VibrationEffect.DEFAULT_AMPLITUDE),
-                VibrationAttributes.createForUsage(VibrationAttributes.USAGE_TOUCH));
+        final VibrationEffect effect;
+        if (vibrator.areAllPrimitivesSupported(VibrationEffect.Composition.PRIMITIVE_CLICK)) {
+            effect = VibrationEffect.startComposition()
+                    .addPrimitive(VibrationEffect.Composition.PRIMITIVE_CLICK, 1f)
+                    .compose();
+        } else {
+            effect = VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK);
+        }
+        // USAGE_HARDWARE_FEEDBACK isn't gated by the touch-feedback setting, so the power button
+        // is always felt even when touch haptics are off.
+        vibrator.vibrate(effect,
+                VibrationAttributes.createForUsage(VibrationAttributes.USAGE_HARDWARE_FEEDBACK));
     }
 
     private void playSound(int soundId) {
