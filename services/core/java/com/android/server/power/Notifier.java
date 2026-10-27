@@ -1195,7 +1195,10 @@ public class Notifier {
                 == Settings.Global.ZEN_MODE_OFF;
         final boolean silentMode = mAudioManager.getRingerModeInternal()
                 == AudioManager.RINGER_MODE_SILENT;
-        return enabled && dndOff && !silentMode;
+        // CubeOS: no charging chime during setup (first boot is often on USB).
+        final boolean provisioned = Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.DEVICE_PROVISIONED, 0) != 0;
+        return enabled && dndOff && !silentMode && provisioned;
     }
 
     private void notifyWakeLockListener(IWakeLockCallback callback, String tag, boolean isEnabled,

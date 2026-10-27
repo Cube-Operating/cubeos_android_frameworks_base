@@ -1080,6 +1080,13 @@ public final class NotificationAttentionHelper {
         if (mDisableNotificationEffects) {
             return "booleanState";
         }
+        // CubeOS: setup is silent. The boot-time flag above can be cleared by any status bar
+        // disable change before setup holds the bar, letting a first-boot notification chime as
+        // the Hello screen appears; until the device is provisioned, nothing makes a sound.
+        if (Settings.Global.getInt(mContext.getContentResolver(),
+                Settings.Global.DEVICE_PROVISIONED, 0) == 0) {
+            return "notProvisioned";
+        }
 
         if ((listenerHints & HINT_HOST_DISABLE_EFFECTS) != 0) {
             return "listenerHints";
