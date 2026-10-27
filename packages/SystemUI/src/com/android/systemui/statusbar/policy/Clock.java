@@ -26,6 +26,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.database.ContentObserver;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.icu.lang.UCharacter;
 import android.icu.text.DateTimePatternGenerator;
@@ -130,6 +133,10 @@ public class Clock extends TextView implements
      * Color to be set on this {@link TextView}, when wallpaperTextColor is <b>not</b> utilized.
      */
     private int mNonAdaptedColor;
+
+    // CubeOS: iOS's capsule around the time (Personal Hotspot). 0 = no pill.
+    private int mPillColor = 0;
+    private final Paint mPillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private final BroadcastDispatcher mBroadcastDispatcher;
 
@@ -430,7 +437,38 @@ public class Clock extends TextView implements
     @Override
     public void onDarkChanged(ArrayList<Rect> areas, float darkIntensity, int tint) {
         mNonAdaptedColor = DarkIconDispatcher.getTint(areas, this, tint);
-        setTextColor(mNonAdaptedColor);
+        setTextColor(mPillColor != 0 ? Color.WHITE : mNonAdaptedColor);
+    }
+
+    /**
+     * CubeOS: draws iOS's capsule behind the time in [color] (white digits on it, on light and
+     * dark status bars alike), or removes it with 0.
+     */
+    public void setPill(int color) {
+        if (mPillColor == color) return;
+        mPillColor = color;
+        mPillPaint.setColor(color);
+        setTextColor(color != 0 ? Color.WHITE : mNonAdaptedColor);
+        reloadDimens();
+        requestLayout();
+        invalidate();
+    }
+
+    private int pillPadding() {
+        return mPillColor == 0 ? 0 : Math.round(7 * getResources().getDisplayMetrics().density);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (mPillColor != 0) {
+            Paint.FontMetrics fm = getPaint().getFontMetrics();
+            float h = (fm.descent - fm.ascent) * 0.98f;
+            float cy = getHeight() / 2f;
+            float left = getPaddingStart() - pillPadding();
+            float right = getWidth() - getPaddingEnd() + pillPadding();
+            canvas.drawRoundRect(left, cy - h / 2, right, cy + h / 2, h / 2, h / 2, mPillPaint);
+        }
+        super.onDraw(canvas);
     }
 
     // Update text color based when shade scrim changes color.
@@ -452,10 +490,10 @@ public class Clock extends TextView implements
         FontSizeUtils.updateFontSize(this, R.dimen.status_bar_clock_size);
         setPaddingRelative(
                 mContext.getResources().getDimensionPixelSize(
-                        R.dimen.status_bar_clock_starting_padding),
+                        R.dimen.status_bar_clock_starting_padding) + pillPadding(),
                 0,
                 mContext.getResources().getDimensionPixelSize(
-                        R.dimen.status_bar_clock_end_padding),
+                        R.dimen.status_bar_clock_end_padding) + pillPadding(),
                 0);
 
         float fontHeight = getPaint().getFontMetricsInt(null);

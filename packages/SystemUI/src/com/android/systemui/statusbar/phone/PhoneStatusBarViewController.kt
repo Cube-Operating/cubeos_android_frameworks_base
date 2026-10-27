@@ -46,6 +46,7 @@ import com.android.systemui.shared.animation.UnfoldMoveFromCenterAnimator
 import com.android.systemui.statusbar.data.repository.StatusBarContentInsetsProviderStore
 import com.android.systemui.statusbar.policy.Clock
 import com.android.systemui.statusbar.policy.ConfigurationController
+import com.android.systemui.statusbar.policy.HotspotController
 import com.android.systemui.statusbar.policy.LocationController
 import com.android.systemui.statusbar.window.StatusBarWindowStateController
 import com.android.systemui.unfold.SysUIUnfoldComponent
@@ -62,6 +63,9 @@ import javax.inject.Named
 import javax.inject.Provider
 
 private const val TAG = "PhoneStatusBarViewController"
+
+/** iOS green (#34C759): the capsule around the time while Personal Hotspot is on. */
+private const val HOTSPOT_PILL = 0xFF34C759.toInt()
 
 /** Controller for [PhoneStatusBarView]. */
 class PhoneStatusBarViewController
@@ -85,6 +89,7 @@ private constructor(
     private val statusBarContentInsetsProvider: StatusBarContentInsetsProvider,
     private val lazyStatusBarShadeDisplayPolicy: Lazy<StatusBarTouchShadeDisplayPolicy>,
     private val locationController: LocationController,
+    private val hotspotController: HotspotController,
 ) : ViewController<PhoneStatusBarView>(view) {
 
     private lateinit var battery: BatteryMeterView
@@ -93,6 +98,11 @@ private constructor(
     private val locationCallback =
         object : LocationController.LocationChangeCallback {
             override fun onLocationActiveChanged(active: Boolean) = showLocationArrow(active)
+        }
+    // CubeOS: iOS's green capsule around the time while Personal Hotspot is on.
+    private val hotspotCallback =
+        HotspotController.Callback { enabled, _ ->
+            mView.findViewById<Clock>(R.id.clock)?.setPill(if (enabled) HOTSPOT_PILL else 0)
         }
     val clockController by lazy { ClockController(context, mView) }
     private lateinit var startSideContainer: View
@@ -129,6 +139,7 @@ private constructor(
         locationArrow = mView.findViewById(R.id.location_arrow)
         locationController.addCallback(locationCallback)
         showLocationArrow(locationController.isLocationActive)
+        hotspotController.addCallback(hotspotCallback)
         addDarkReceivers()
         addCursorSupportToIconContainers()
 
@@ -187,6 +198,7 @@ private constructor(
     public override fun onViewDetached() {
         removeDarkReceivers()
         locationController.removeCallback(locationCallback)
+        hotspotController.removeCallback(hotspotCallback)
         startSideContainer.setOnHoverListener(null)
         endSideContainer.setOnHoverListener(null)
         progressProvider?.setReadyToHandleTransition(false)
@@ -370,6 +382,7 @@ private constructor(
         private val statusBarContentInsetsProviderStore: StatusBarContentInsetsProviderStore,
         private val lazyStatusBarShadeDisplayPolicy: Lazy<StatusBarTouchShadeDisplayPolicy>,
         private val locationController: LocationController,
+        private val hotspotController: HotspotController,
     ) {
         fun create(view: PhoneStatusBarView): PhoneStatusBarViewController {
             val statusBarMoveFromCenterAnimationController =
@@ -399,6 +412,7 @@ private constructor(
                 statusBarContentInsetsProviderStore.defaultDisplay,
                 lazyStatusBarShadeDisplayPolicy,
                 locationController,
+                hotspotController,
             )
         }
     }
