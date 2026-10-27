@@ -46,6 +46,7 @@ import com.android.systemui.shared.animation.UnfoldMoveFromCenterAnimator
 import com.android.systemui.statusbar.data.repository.StatusBarContentInsetsProviderStore
 import com.android.systemui.statusbar.policy.Clock
 import com.android.systemui.statusbar.policy.ConfigurationController
+import com.android.systemui.statusbar.policy.LocationController
 import com.android.systemui.statusbar.window.StatusBarWindowStateController
 import com.android.systemui.unfold.SysUIUnfoldComponent
 import com.android.systemui.unfold.UNFOLD_STATUS_BAR
@@ -83,9 +84,16 @@ private constructor(
     private val darkIconDispatcher: DarkIconDispatcher,
     private val statusBarContentInsetsProvider: StatusBarContentInsetsProvider,
     private val lazyStatusBarShadeDisplayPolicy: Lazy<StatusBarTouchShadeDisplayPolicy>,
+    private val locationController: LocationController,
 ) : ViewController<PhoneStatusBarView>(view) {
 
     private lateinit var battery: BatteryMeterView
+    // CubeOS: the iOS-style location arrow beside the clock.
+    private var locationArrow: LocationArrowView? = null
+    private val locationCallback =
+        object : LocationController.LocationChangeCallback {
+            override fun onLocationActiveChanged(active: Boolean) = showLocationArrow(active)
+        }
     val clockController by lazy { ClockController(context, mView) }
     private lateinit var startSideContainer: View
     private lateinit var endSideContainer: View
@@ -118,6 +126,9 @@ private constructor(
 
     override fun onViewAttached() {
         battery = mView.requireViewById(R.id.battery)
+        locationArrow = mView.findViewById(R.id.location_arrow)
+        locationController.addCallback(locationCallback)
+        showLocationArrow(locationController.isLocationActive)
         addDarkReceivers()
         addCursorSupportToIconContainers()
 
@@ -175,6 +186,7 @@ private constructor(
     @VisibleForTesting
     public override fun onViewDetached() {
         removeDarkReceivers()
+        locationController.removeCallback(locationCallback)
         startSideContainer.setOnHoverListener(null)
         endSideContainer.setOnHoverListener(null)
         progressProvider?.setReadyToHandleTransition(false)
@@ -237,11 +249,17 @@ private constructor(
     private fun addDarkReceivers() {
         darkIconDispatcher.addDarkReceiver(battery)
         clockController.addDarkReceiver()
+        locationArrow?.let { darkIconDispatcher.addDarkReceiver(it) }
+    }
+
+    private fun showLocationArrow(active: Boolean) {
+        locationArrow?.visibility = if (active) View.VISIBLE else View.GONE
     }
 
     private fun removeDarkReceivers() {
         darkIconDispatcher.removeDarkReceiver(battery)
         clockController.removeDarkReceiver()
+        locationArrow?.let { darkIconDispatcher.removeDarkReceiver(it) }
     }
 
     inner class PhoneStatusBarViewTouchHandler : Gefingerpoken {
@@ -351,6 +369,7 @@ private constructor(
         @DisplaySpecific private val darkIconDispatcher: DarkIconDispatcher,
         private val statusBarContentInsetsProviderStore: StatusBarContentInsetsProviderStore,
         private val lazyStatusBarShadeDisplayPolicy: Lazy<StatusBarTouchShadeDisplayPolicy>,
+        private val locationController: LocationController,
     ) {
         fun create(view: PhoneStatusBarView): PhoneStatusBarViewController {
             val statusBarMoveFromCenterAnimationController =
@@ -379,6 +398,7 @@ private constructor(
                 darkIconDispatcher,
                 statusBarContentInsetsProviderStore.defaultDisplay,
                 lazyStatusBarShadeDisplayPolicy,
+                locationController,
             )
         }
     }

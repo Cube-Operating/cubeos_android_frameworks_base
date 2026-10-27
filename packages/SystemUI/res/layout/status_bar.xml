@@ -104,6 +104,19 @@
                         systemui:isStatusBar="true"
                     />
 
+                    <!-- CubeOS: the location arrow sits beside the clock, as on iOS. -->
+                    <com.android.systemui.statusbar.phone.LocationArrowView
+                        android:id="@+id/location_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/status_bar_system_icons_height"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="4dp"
+                        android:scaleType="center"
+                        android:src="@drawable/stat_sys_location_arrow"
+                        android:contentDescription="@string/accessibility_location_active"
+                        android:visibility="gone"
+                    />
+
                     <include layout="@layout/ongoing_activity_chip"
                         android:id="@+id/ongoing_activity_chip_primary"/>
 

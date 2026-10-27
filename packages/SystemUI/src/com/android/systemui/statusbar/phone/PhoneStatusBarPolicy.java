@@ -947,11 +947,9 @@ public class PhoneStatusBarPolicy
 
     // Updates the status view based on the current state of location requests.
     private void updateLocationFromController() {
-        if (mLocationController.isLocationActive()) {
-            mIconController.setIconVisibility(mSlotLocation, true);
-        } else {
-            mIconController.setIconVisibility(mSlotLocation, false);
-        }
+        // CubeOS: the location arrow lives beside the clock (PhoneStatusBarViewController), as
+        // on iOS, so the right-hand slot stays hidden.
+        mIconController.setIconVisibility(mSlotLocation, false);
     }
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
