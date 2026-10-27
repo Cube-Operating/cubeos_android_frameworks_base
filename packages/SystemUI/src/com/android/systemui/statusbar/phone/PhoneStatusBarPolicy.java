@@ -119,7 +119,8 @@ public class PhoneStatusBarPolicy
     private static final String TAG = "PhoneStatusBarPolicy";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
-    static final int LOCATION_STATUS_ICON_ID = PrivacyType.TYPE_LOCATION.getIconId();
+    // CubeOS: an arrow, as iOS shows, rather than the location permission's map pin.
+    static final int LOCATION_STATUS_ICON_ID = R.drawable.stat_sys_location_arrow;
 
     private final String mSlotCast;
     private final String mSlotHotspot;

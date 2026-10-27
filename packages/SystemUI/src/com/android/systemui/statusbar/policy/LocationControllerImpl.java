@@ -210,7 +210,7 @@ public class LocationControllerImpl extends BroadcastReceiver implements Locatio
 
     private boolean getAllAccessesSetting() {
         return mDeviceConfigProxy.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                SystemUiDeviceConfigFlags.PROPERTY_LOCATION_INDICATORS_SMALL_ENABLED, false);
+                SystemUiDeviceConfigFlags.PROPERTY_LOCATION_INDICATORS_SMALL_ENABLED, true); // CubeOS: any app use, like iOS
     }
 
     private boolean getShowSystemFlag() {
