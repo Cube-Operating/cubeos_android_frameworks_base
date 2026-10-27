@@ -727,6 +727,13 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
     }
 
     private void updateDrawable() {
+        // CubeOS: the unified battery is the only glyph with new_status_bar_icons; Lineage's
+        // portrait/circle drawables get no colours in that mode (they drew magenta).
+        if (newStatusBarIcons()) {
+            mBatteryIconView.setImageDrawable(mUnifiedBattery);
+            mBatteryIconView.setVisibility(View.VISIBLE);
+            return;
+        }
         switch (getBatteryStyle()) {
             case BATTERY_STYLE_PORTRAIT:
                 mBatteryIconView.setImageDrawable(mAccessorizedDrawable);
