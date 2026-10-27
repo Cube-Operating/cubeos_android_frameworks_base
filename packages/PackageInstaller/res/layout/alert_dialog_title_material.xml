@@ -31,7 +31,7 @@
             android:textAlignment="center"
             android:textSize="17sp"
             android:textFontWeight="600"
-            style="?attr/windowTitleStyle" />
+            style="?android:attr/windowTitleStyle" />
     </LinearLayout>
     <Space
         android:id="@+id/titleDividerNoCustom"
