@@ -335,7 +335,9 @@ public class PhoneStatusBarPolicy
         // hotspot
         mIconController.setIcon(mSlotHotspot, R.drawable.stat_sys_hotspot,
                 mResources.getString(R.string.accessibility_status_bar_hotspot));
-        mIconController.setIconVisibility(mSlotHotspot, mHotspot.isHotspotEnabled());
+        // CubeOS: iOS shows Personal Hotspot as a green capsule around the time
+        // (PhoneStatusBarViewController), not as an icon on the right.
+        mIconController.setIconVisibility(mSlotHotspot, false);
 
         // profile
         updateProfileIcon();
@@ -798,7 +800,7 @@ public class PhoneStatusBarPolicy
     private final HotspotController.Callback mHotspotCallback = new HotspotController.Callback() {
         @Override
         public void onHotspotChanged(boolean enabled, int numDevices) {
-            mIconController.setIconVisibility(mSlotHotspot, enabled);
+            mIconController.setIconVisibility(mSlotHotspot, false); // CubeOS: the clock's capsule
         }
     };
 
