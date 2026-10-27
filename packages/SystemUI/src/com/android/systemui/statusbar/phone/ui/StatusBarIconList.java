@@ -35,6 +35,9 @@ public class StatusBarIconList {
     private final ArrayList<Slot> mSlots = new ArrayList<>();
     private final List<Slot> mViewOnlySlots = Collections.unmodifiableList(mSlots);
 
+    /** CubeOS: the island's battery ("battery" from another app becomes "battery__external"). */
+    private static final String CUBE_BATTERY_SLOT = "battery__external";
+
     public StatusBarIconList(String[] slots) {
         final int N = slots.length;
         for (int i = 0; i < N; i++) {
@@ -121,6 +124,13 @@ public class StatusBarIconList {
             if (item.getName().equals(slot)) {
                 return i;
             }
+        }
+        // CubeOS: the island's battery always goes last, at the right-hand end as on iOS. The
+        // container lays icons out from the right and turns the leftmost into a dot when there
+        // are too many (hotspot, Bluetooth, alarm...), so last also means it is never hidden.
+        if (CUBE_BATTERY_SLOT.equals(slot)) {
+            mSlots.add(new Slot(slot, null));
+            return N;
         }
         // Auto insert new items at the beginning.
         mSlots.add(0, new Slot(slot, null));
