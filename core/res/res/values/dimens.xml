@@ -732,9 +732,10 @@
          aliasing effects). This is only used on circular displays. -->
     <dimen name="circular_display_mask_thickness">1px</dimen>
 
-    <dimen name="lock_pattern_dot_line_width">22dp</dimen>
-    <dimen name="lock_pattern_dot_size">14dp</dimen>
-    <dimen name="lock_pattern_dot_size_activated">30dp</dimen>
+    <!-- CubeOS: a fine line and crisp dots (AOSP: 22dp / 14dp / 30dp). -->
+    <dimen name="lock_pattern_dot_line_width">6dp</dimen>
+    <dimen name="lock_pattern_dot_size">12dp</dimen>
+    <dimen name="lock_pattern_dot_size_activated">22dp</dimen>
     <!-- How much of the cell space is classified as hit areas [0..1] where 1 means that hit area is
          a circle with diameter equals to cell minimum side min(width, height). -->
     <item type="dimen" format="float" name="lock_pattern_dot_hit_factor">0.6</item>

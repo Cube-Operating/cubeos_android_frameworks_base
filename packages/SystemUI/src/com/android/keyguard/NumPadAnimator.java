@@ -109,7 +109,8 @@ class NumPadAnimator {
         mWidth = width;
         mHeight = height;
         mStartRadius = height / 2f;
-        mEndRadius = height / 4f;
+        // CubeOS: keys stay round while pressed, as on iOS (AOSP morphs them to rounded squares).
+        mEndRadius = height / 2f;
         mExpandAnimator.setFloatValues(mStartRadius, mEndRadius);
         mContractAnimator.setFloatValues(mEndRadius, mStartRadius);
         // Set initial corner radius.
@@ -138,6 +139,18 @@ class NumPadAnimator {
         mTextColorPrimary = isNumPadKey
                 ? getColorAttrDefaultColor(context, NUM_PAD_KEY)
                 : getColorAttrDefaultColor(context, NUM_PAD_BUTTON);
+        // CubeOS: the iOS passcode pad over the blurred wallpaper - digits on frosted-glass
+        // circles that light up while held; Delete and Enter are bare white glyphs.
+        if (isNumPadKey) {
+            mNormalBackgroundColor = 0x33FFFFFF;
+            mPressedBackgroundColor = 0x99FFFFFF;
+        } else {
+            mNormalBackgroundColor = 0x00FFFFFF;
+            mPressedBackgroundColor = 0x29FFFFFF;
+        }
+        mTextColorPrimary = 0xFFFFFFFF;
+        mTextColorPressed = 0xFFFFFFFF;
+        mBackground.setColor(mNormalBackgroundColor);
         createAnimators();
     }
 

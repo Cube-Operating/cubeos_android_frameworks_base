@@ -19,10 +19,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Instructions telling the user to enter their PIN password to unlock the keyguard [CHAR LIMIT=30] -->
-    <string name="keyguard_enter_your_pin">Enter your PIN</string>
+    <string name="keyguard_enter_your_pin">Enter your passcode</string>
 
     <!-- Instructions telling the user to enter their PIN password to unlock the keyguard [CHAR LIMIT=48] -->
-    <string name="keyguard_enter_pin">Enter PIN</string>
+    <string name="keyguard_enter_pin">Enter Passcode</string>
 
     <!-- Instructions telling the user to enter their pattern to unlock the keyguard [CHAR LIMIT=30] -->
     <string name="keyguard_enter_your_pattern">Enter your pattern</string>

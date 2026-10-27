@@ -18,7 +18,8 @@
 -->
 <resources>
     <!-- Spacing around each button used for PIN view -->
-    <dimen name="num_pad_key_width">84dp</dimen>
+    <!-- CubeOS: iOS passcode pad proportions. -->
+    <dimen name="num_pad_key_width">78dp</dimen>
     <dimen name="num_pad_row_margin_bottom">12dp</dimen>
-    <dimen name="num_pad_key_margin_end">20dp</dimen>
+    <dimen name="num_pad_key_margin_end">24dp</dimen>
 </resources>

@@ -68,9 +68,11 @@
         <item name="android:singleLine">true</item>
         <item name="android:gravity">center_horizontal|center_vertical</item>
         <item name="android:background">@null</item>
-        <item name="android:textSize">32dp</item>
+        <item name="android:textSize">36dp</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+        <!-- CubeOS: light digits, as the iOS passcode pad draws them. -->
+        <item name="android:textFontWeight">300</item>
         <item name="android:paddingBottom">-16dp</item>
     </style>
     <style name="Widget.TextView.Password" parent="@android:style/Widget.TextView">
@@ -89,10 +91,13 @@
     </style>
     <style name="Widget.TextView.NumPadKey.Klondike"
            parent="@android:style/Widget.DeviceDefault.TextView">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">10sp</item>
         <item name="android:background">@null</item>
         <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <!-- CubeOS: small, widely spaced letters in white, as on iOS. -->
+        <item name="android:textFontWeight">600</item>
+        <item name="android:letterSpacing">0.18</item>
+        <item name="android:textColor">#ffffffff</item>
         <item name="android:paddingBottom">0dp</item>
     </style>
 

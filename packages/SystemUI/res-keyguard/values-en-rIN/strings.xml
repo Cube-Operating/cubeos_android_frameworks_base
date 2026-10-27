@@ -20,8 +20,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="keyguard_enter_your_pin" msgid="5429932527814874032">"Enter your PIN"</string>
-    <string name="keyguard_enter_pin" msgid="8114529922480276834">"Enter PIN"</string>
+    <string name="keyguard_enter_your_pin" msgid="5429932527814874032">Enter your passcode</string>
+    <string name="keyguard_enter_pin" msgid="8114529922480276834">Enter Passcode</string>
     <string name="keyguard_enter_your_pattern" msgid="351503370332324745">"Enter your pattern"</string>
     <string name="keyguard_enter_pattern" msgid="7616595160901084119">"Draw pattern"</string>
     <string name="keyguard_enter_your_password" msgid="7225626204122735501">"Enter your password"</string>
