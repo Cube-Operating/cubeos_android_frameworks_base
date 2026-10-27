@@ -556,15 +556,13 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
 
         // TODO(b/140051051)
         final int showBatteryPercent = LineageSettings.System.getIntForUser(
-                getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 0,
+                getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 1,
                 UserHandle.USER_CURRENT);
-        final boolean drawPercentInside = mShowPercentMode == MODE_DEFAULT &&
-                showBatteryPercent == 1;
-        final boolean drawPercentOnly = mShowPercentMode == MODE_ESTIMATE ||
-                showBatteryPercent == 2;
-        boolean shouldShow =
-                (drawPercentOnly && (!drawPercentInside || isCharging()) ||
-                getBatteryStyle() == BATTERY_STYLE_TEXT);
+        // CubeOS: the unified battery only draws the percent inside the glyph (iOS style), so
+        // both "inside" (1) and "next to" (2) show it there; 0 or MODE_OFF hides it.
+        boolean shouldShow = mShowPercentMode == MODE_ON || mShowPercentMode == MODE_ESTIMATE
+                || (mShowPercentMode == MODE_DEFAULT && showBatteryPercent != 0)
+                || getBatteryStyle() == BATTERY_STYLE_TEXT;
         shouldShow = shouldShow && !mBatteryStateUnknown;
 
         setBatteryDrawableState(
@@ -588,7 +586,7 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
         final boolean showing = mBatteryPercentView != null;
         // TODO(b/140051051)
         final int showBatteryPercent = LineageSettings.System.getIntForUser(
-                getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 0,
+                getContext().getContentResolver(), STATUS_BAR_SHOW_BATTERY_PERCENT, 1,
                 UserHandle.USER_CURRENT);
         final boolean drawPercentInside = mShowPercentMode == MODE_DEFAULT &&
                 showBatteryPercent == 1;
