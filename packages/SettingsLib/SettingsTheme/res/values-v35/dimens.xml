@@ -16,6 +16,7 @@
   -->
 
 <resources>
-    <dimen name="settingslib_preference_corner_radius">20dp</dimen>
-    <dimen name="settingslib_preference_corner_radius_selected">28dp</dimen>
+    <!-- CubeOS: iOS 26 inset grouped sections, as CubeOS draws its own (CubeSection, 24dp); rows joined. -->
+    <dimen name="settingslib_preference_corner_radius">24dp</dimen>
+    <dimen name="settingslib_preference_corner_radius_selected">24dp</dimen>
 </resources>

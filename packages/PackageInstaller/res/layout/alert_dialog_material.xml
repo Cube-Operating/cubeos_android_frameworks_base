@@ -54,6 +54,8 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="?android:attr/dialogPreferredPadding"
                     android:paddingStart="?android:attr/dialogPreferredPadding"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
                     style="@android:style/TextAppearance.Material.Subhead" />
 
                 <Space

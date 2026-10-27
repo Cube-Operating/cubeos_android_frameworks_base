@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: a secondary alert button - a soft grey capsule (iOS 26 alerts). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#29808080" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+</ripple>

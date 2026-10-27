@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: the alert's main action - a solid accent capsule (iOS 26 alerts). -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#33FFFFFF">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?android:attr/colorAccent" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+</ripple>

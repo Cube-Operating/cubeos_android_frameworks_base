@@ -19,7 +19,7 @@
     <item
         android:end="?android:attr/listPreferredItemPaddingEnd"
         android:start="?android:attr/listPreferredItemPaddingStart"
-        android:top="2dp">
+        android:top="0dp">
         <shape
             android:shape="rectangle"
             android:tint="?android:attr/colorAccent">

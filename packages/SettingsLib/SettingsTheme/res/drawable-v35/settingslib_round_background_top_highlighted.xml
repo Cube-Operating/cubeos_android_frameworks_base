@@ -20,13 +20,13 @@
         android:color="?android:attr/colorAccent"
         android:end="?android:attr/listPreferredItemPaddingEnd"
         android:start="?android:attr/listPreferredItemPaddingStart"
-        android:top="2dp">
+        android:top="0dp">
         <shape
             android:shape="rectangle"
             android:tint="?android:attr/colorAccent">
             <corners
-                android:bottomLeftRadius="4dp"
-                android:bottomRightRadius="4dp"
+                android:bottomLeftRadius="0dp"
+                android:bottomRightRadius="0dp"
                 android:topLeftRadius="@dimen/settingslib_preference_corner_radius"
                 android:topRightRadius="@dimen/settingslib_preference_corner_radius" />
             <solid android:color="#42000000" />

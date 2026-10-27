@@ -243,26 +243,32 @@
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
+    <!-- CubeOS: "Confirm it's you" set as iOS does - centred, a 24sp semibold title, quieter
+         secondary lines, a rounded filled field (was a 36dp start-aligned Material title). -->
     <style name="TextAppearance.AuthNonBioCredential.Title">
         <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:textSize">36dp</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:gravity">center_horizontal</item>
         <item name="android:focusable">true</item>
         <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
     </style>
 
     <style name="TextAppearance.AuthNonBioCredential.Subtitle">
-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">?androidprv:attr/materialColorOnSurfaceVariant</item>
     </style>
 
     <style name="TextAppearance.AuthNonBioCredential.Description">
-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">?androidprv:attr/materialColorOnSurfaceVariant</item>
     </style>
 
     <style name="TextAppearance.AuthNonBioCredential.Error">
@@ -284,14 +290,14 @@
         <item name="android:paddingTop">28dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:background">@drawable/edit_text_filled</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:background">@drawable/auth_credential_cube_field</item>
     </style>
 
     <style name="AuthNonBioCredentialHeaderStyle">
-        <item name="android:paddingStart">48dp</item>
-        <item name="android:paddingEnd">48dp</item>
-        <item name="android:paddingTop">48dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+        <item name="android:paddingTop">72dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:layout_gravity">top</item>
     </style>
