@@ -137,7 +137,9 @@ constructor(
                     screenRecord = screenRecord,
                     shareToApp = shareToApp,
                     castToOtherDevice = castToOtherDevice,
-                    call = call,
+                    // CubeOS: the island shows the call (as iOS's Dynamic Island does), so the
+                    // status bar shows no second call chip beside the time.
+                    call = OngoingActivityChipModel.Hidden(),
                     notifs = notifs,
                     demoNotif = demoNotif,
                 )
