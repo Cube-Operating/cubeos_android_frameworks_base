@@ -1678,9 +1678,11 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
                     if (titleRes
                             != com.android.internal.R.string
                             .usb_unsupported_audio_accessory_title) {
+                        // CubeOS: Settings › Connected Devices › USB, not stock Settings.
                         Intent intent = Intent.makeRestartActivityTask(
-                                new ComponentName("com.android.settings",
-                                        "com.android.settings.Settings$UsbDetailsActivity"));
+                                new ComponentName("org.cubeapp.settings",
+                                        "org.cubeapp.settings.MainActivity"))
+                                .setAction("org.cubeapp.settings.action.USB");
                         // Simple notification clicks are immutable
                         pi = PendingIntent.getActivityAsUser(mContext, 0,
                                 intent, PendingIntent.FLAG_IMMUTABLE, null, UserHandle.CURRENT);
