@@ -70,7 +70,7 @@ class PrivacyConfig @Inject constructor(
                     }
 
                     if (properties.keyset.contains(LOCATION)) {
-                        locationAvailable = properties.getBoolean(LOCATION, DEFAULT_LOCATION)
+                        locationAvailable = false // CubeOS: see isLocationEnabled
                         callbacks.forEach { it.get()?.onFlagLocationChanged(locationAvailable) }
                     }
 
@@ -97,10 +97,12 @@ class PrivacyConfig @Inject constructor(
                 MIC_CAMERA, DEFAULT_MIC_CAMERA)
     }
 
-    private fun isLocationEnabled(): Boolean {
-        return deviceConfigProxy.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                LOCATION, DEFAULT_LOCATION)
-    }
+    /**
+     * CubeOS: never put location in the privacy chip. iOS shows location only as the arrow beside
+     * the time (LocationArrowView); the chip, which some builds turn on through device config,
+     * covered the right-hand icons whenever an app had just used location.
+     */
+    private fun isLocationEnabled(): Boolean = false
 
     private fun isMediaProjectionEnabled(): Boolean {
         return deviceConfigProxy.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,

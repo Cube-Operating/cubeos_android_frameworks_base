@@ -59,7 +59,9 @@ import com.android.systemui.util.DeviceConfigProxy;
 import com.android.systemui.util.settings.SecureSettings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -79,6 +81,8 @@ public class LocationControllerImpl extends BroadcastReceiver implements Locatio
     private final H mHandler;
     private final Handler mBackgroundHandler;
     private final PackageManager mPackageManager;
+    // CubeOS: whether a package has a home-screen icon, cached per package (see hasLauncherIcon).
+    private final Map<String, Boolean> mLauncherIcon = new HashMap<>();
     private final ContentObserver mContentObserver;
     private final SecureSettings mSecureSettings;
 
@@ -261,7 +265,10 @@ public class LocationControllerImpl extends BroadcastReceiver implements Locatio
         for (int i = 0; i < numItems; i++) {
             if (appOpsItems.get(i).getCode() == OP_FINE_LOCATION
                     || appOpsItems.get(i).getCode() == OP_COARSE_LOCATION) {
-                isSystemApp = isSystemApp(profiles, appOpsItems.get(i));
+                // CubeOS: an app you open from the home screen (Path, Weather) shows the arrow
+                // like on iOS, even when it ships with the system; background services don't.
+                isSystemApp = isSystemApp(profiles, appOpsItems.get(i))
+                        && !hasLauncherIcon(appOpsItems.get(i).getPackageName());
                 if (isSystemApp) {
                     systemAppOp = true;
                 } else {
@@ -293,6 +300,16 @@ public class LocationControllerImpl extends BroadcastReceiver implements Locatio
                 mUiEventLogger.log(LocationIndicatorEvent.LOCATION_INDICATOR_NON_SYSTEM_APP);
             }
         }
+    }
+
+    private boolean hasLauncherIcon(String pkg) {
+        Boolean cached = mLauncherIcon.get(pkg);
+        if (cached != null) return cached;
+        Intent launcher = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+                .setPackage(pkg);
+        boolean has = !mPackageManager.queryIntentActivities(launcher, 0).isEmpty();
+        mLauncherIcon.put(pkg, has);
+        return has;
     }
 
     private boolean isSystemApp(List<UserInfo> profiles, AppOpItem item) {
