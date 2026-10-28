@@ -87,6 +87,10 @@ public class UsbDebuggingActivity extends AlertActivity
 
         final AlertController.AlertParams ap = mAlertParams;
         ap.mTitle = getString(R.string.usb_debugging_title);
+        // CubeOS: the fingerprint in two even lines (8 pairs each) instead of wrapping mid-pair.
+        if (fingerprints != null && fingerprints.length() > 24 && fingerprints.charAt(23) == ':') {
+            fingerprints = fingerprints.substring(0, 23) + "\n" + fingerprints.substring(24);
+        }
         ap.mMessage = getString(R.string.usb_debugging_message, fingerprints);
         ap.mPositiveButtonText = getString(R.string.usb_debugging_allow);
         ap.mNegativeButtonText = getString(android.R.string.cancel);

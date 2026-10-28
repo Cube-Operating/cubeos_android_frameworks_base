@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: iOS-style check circle (checked): accent disc with a white tick. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp" android:height="22dp" android:viewportWidth="22" android:viewportHeight="22">
+    <path android:fillColor="?android:attr/colorAccent" android:pathData="M11,0A11,11 0 1,1 10.99,0Z" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="2" android:strokeLineCap="round"
+        android:strokeLineJoin="round" android:pathData="M6.5,11.3L9.6,14.3L15.6,8" />
+</vector>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: iOS-style check circle (unchecked): a grey ring. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp" android:height="22dp" android:viewportWidth="22" android:viewportHeight="22">
+    <path android:strokeColor="#FF8E8E93" android:strokeWidth="1.5" android:pathData="M11,0.75A10.25,10.25 0 1,1 10.99,0.75Z" />
+</vector>

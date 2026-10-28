@@ -20,14 +20,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="14dip"
-    android:paddingEnd="15dip"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="2dp"
     android:orientation="vertical">
-    
+
+    <!-- CubeOS: an iOS-style check circle, centred under the message (was a Material checkbox). -->
     <CheckBox
         android:id="@+id/alwaysUse"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:button="@drawable/cube_check_circle"
+        android:background="@null"
+        android:paddingStart="10dp"
+        android:minHeight="40dp"
+        android:gravity="center_vertical"
+        android:textSize="15sp"
+        android:textColor="?android:attr/textColorPrimary"
         android:focusable="true"
         android:clickable="true" />
     
