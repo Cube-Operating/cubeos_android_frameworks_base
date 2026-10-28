@@ -48,6 +48,8 @@ public class NumPadButton extends AlphaOptimizedImageButton implements NumPadAni
         super(context, attrs);
         mStyleAttr = attrs.getStyleAttribute();
         setupAnimator();
+        // CubeOS: Delete and OK are plain white glyphs, as on iOS - no circle behind them.
+        setTransparentMode(true);
     }
 
     @Override

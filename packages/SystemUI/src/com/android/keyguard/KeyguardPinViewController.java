@@ -169,8 +169,8 @@ public class KeyguardPinViewController
      */
     private void updateBackSpaceVisibility() {
         boolean isAutoConfirmation = isAutoPinConfirmEnabledInSettings();
-        mBackspaceKey.setTransparentMode(/* isTransparentMode= */
-                isAutoConfirmation && !mDisabledAutoConfirmation);
+        // CubeOS: always a plain glyph (NumPadButton), whatever the confirmation mode.
+        mBackspaceKey.setTransparentMode(/* isTransparentMode= */ true);
         if (isAutoConfirmation) {
             if (mPasswordEntry.getText().length() > 0
                     || mDisabledAutoConfirmation) {

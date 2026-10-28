@@ -21,9 +21,11 @@
     <TextView android:id="@+id/warning"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:paddingTop="16dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingBottom="8dp"/>
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:paddingTop="2dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="4dp"/>
 </ScrollView>
