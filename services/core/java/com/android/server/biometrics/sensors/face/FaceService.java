@@ -682,8 +682,14 @@ public class FaceService extends SystemService {
                     false, /** supportsFaceDetection **/
                     false, /** supportsSelfIllumination **/
                     false); /** resetLockoutRequiresChallenge **/
-            SenseProvider provider = new SenseProvider(getContext(), mBiometricStateCallback, props, mLockoutResetDispatcher);
-            providers.add(provider);
+            // CubeOS: never let Face Unlock take system_server down at boot (a crash here is a
+            // boot loop); without the provider the phone simply has no face sensor.
+            try {
+                providers.add(new SenseProvider(getContext(), mBiometricStateCallback, props,
+                        mLockoutResetDispatcher));
+            } catch (RuntimeException e) {
+                Slog.e(TAG, "CubeOS Face Unlock provider unavailable", e);
+            }
             return providers;
         }
 

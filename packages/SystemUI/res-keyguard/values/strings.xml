@@ -140,25 +140,25 @@
     <string name="kg_fp_not_recognized">Fingerprint not recognized</string>
 
     <!-- Message shown when we want the users to try biometric auth again or use pin/pattern/password  [CHAR LIMIT=48] -->
-    <string name="bouncer_face_not_recognized">Face not recognized</string>
+    <string name="bouncer_face_not_recognized">Face Not Recognised</string>
 
     <!-- Message shown when we want the users to try biometric auth again or use pin/pattern/password  [CHAR LIMIT=70] -->
-    <string name="kg_bio_try_again_or_pin">Try again or enter PIN</string>
+    <string name="kg_bio_try_again_or_pin">Try Again or Enter Passcode</string>
 
     <!-- Message shown when we want the users to try biometric auth again or use pin/pattern/password  [CHAR LIMIT=70] -->
-    <string name="kg_bio_try_again_or_password">Try again or enter password</string>
+    <string name="kg_bio_try_again_or_password">Try Again or Enter Password</string>
 
     <!-- Message shown when we want the users to try biometric auth again or use pin/pattern/password  [CHAR LIMIT=70] -->
-    <string name="kg_bio_try_again_or_pattern">Try again or draw pattern</string>
+    <string name="kg_bio_try_again_or_pattern">Try Again or Draw Pattern</string>
 
     <!-- Message shown when we are on bouncer after temporary lockout of either face or fingerprint  [CHAR LIMIT=70] -->
-    <string name="kg_bio_too_many_attempts_pin">PIN is required after too many attempts</string>
+    <string name="kg_bio_too_many_attempts_pin">Passcode required to use Face Unlock</string>
 
     <!-- Message shown when we are on bouncer after temporary lockout of either face or fingerprint  [CHAR LIMIT=70] -->
-    <string name="kg_bio_too_many_attempts_password">Password is required after too many attempts</string>
+    <string name="kg_bio_too_many_attempts_password">Password required to use Face Unlock</string>
 
     <!-- Message shown when we are on bouncer after temporary lockout of either face or fingerprint  [CHAR LIMIT=70] -->
-    <string name="kg_bio_too_many_attempts_pattern">Pattern is required after too many attempts</string>
+    <string name="kg_bio_too_many_attempts_pattern">Pattern required to use Face Unlock</string>
 
     <!-- Instructions when the user can unlock with PIN/password/pattern or fingerprint from bouncer. [CHAR LIMIT=48]  -->
     <string name="kg_unlock_with_pin_or_fp">Unlock with PIN or fingerprint</string>
@@ -197,7 +197,7 @@
     <string name="kg_prompt_auth_timeout">Added security required. Device wasn\u2019t unlocked for a while.</string>
 
     <!-- Message shown when face unlock is not available after too many failed face authentication attempts.  [CHAR LIMIT=70] -->
-    <string name="kg_face_locked_out">Can\u2019t unlock with face. Too many attempts.</string>
+    <string name="kg_face_locked_out">Passcode required to use Face Unlock</string>
 
     <!-- Message shown when fingerprint unlock isn't available after too many failed fingerprint authentication attempts.  [CHAR LIMIT=75] -->
     <string name="kg_fp_locked_out">Can\u2019t unlock with fingerprint. Too many attempts.</string>
@@ -322,10 +322,10 @@
     <string name="kg_prompt_reason_user_request">Device was locked manually</string>
 
     <!-- Face hint message when face was not recognized. [CHAR LIMIT=20] -->
-    <string name="kg_face_not_recognized">Not recognized</string>
+    <string name="kg_face_not_recognized">Face not recognised</string>
 
      <!-- Error message indicating that the camera privacy sensor has been turned on [CHAR LIMIT=53] -->
-    <string name="kg_face_sensor_privacy_enabled">To use Face Unlock, turn on camera access in Settings</string>
+    <string name="kg_face_sensor_privacy_enabled">Turn on camera access in Settings to use Face Unlock</string>
 
     <!-- Instructions telling the user remaining times when enter SIM PIN view.  [CHAR LIMIT=NONE] -->
     <string name="kg_password_default_pin_message">{count, plural,

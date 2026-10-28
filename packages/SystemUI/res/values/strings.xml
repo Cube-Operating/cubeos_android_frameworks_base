@@ -559,7 +559,7 @@
     <!-- Message shown to inform the user a face cannot be recognized and fingerprint should instead be used.[CHAR LIMIT=50] -->
     <string name="keyguard_face_failed_use_fp">@string/fingerprint_dialog_use_fingerprint_instead</string>
     <!-- Message shown to inform the user a face cannot be recognized. [CHAR LIMIT=25] -->
-    <string name="keyguard_face_failed">Face not recognized</string>
+    <string name="keyguard_face_failed">Face not recognised</string>
     <!-- Message shown to suggest using fingerprint sensor to authenticate after another biometric failed. [CHAR LIMIT=25] -->
     <string name="keyguard_suggest_fingerprint">Use fingerprint instead</string>
     <!-- Message shown to inform the user that face unlock is not available. [CHAR LIMIT=59] -->
@@ -1184,7 +1184,7 @@
     <string name="keyguard_unlock_press">Press the unlock icon to open</string>
 
     <!-- Message shown when non-bypass face authentication succeeds. Provides extra instructions for how the user can enter their device [CHAR LIMIT=60] -->
-    <string name="keyguard_face_successful_unlock_swipe">Unlocked by face. Swipe up to open.</string>
+    <string name="keyguard_face_successful_unlock_swipe">Unlocked. Swipe up to open</string>
     <!-- Message shown when non-bypass face authentication succeeds and UDFPS is supported. Provides extra instructions for how the user can enter their device [CHAR LIMIT=60] -->
     <string name="keyguard_face_successful_unlock_press">Unlocked by face. Press the unlock icon to open.</string>
     <!-- Message shown when non-bypass face authentication succeeds and UDFPS is supported. Provides extra instructions for how the user can enter their device [CHAR LIMIT=60] -->
@@ -1195,7 +1195,7 @@
     <string name="keyguard_face_successful_unlock_press_alt_3">Face recognized. Press the unlock icon to open.</string>
 
     <!-- Message shown when non-bypass face authentication succeeds. [CHAR LIMIT=60] -->
-    <string name="keyguard_face_successful_unlock">Unlocked by face</string>
+    <string name="keyguard_face_successful_unlock">Unlocked</string>
     <!-- Message shown when non-bypass face authentication succeeds. [CHAR LIMIT=60] -->
     <string name="keyguard_face_successful_unlock_alt1">Face recognized</string>
 

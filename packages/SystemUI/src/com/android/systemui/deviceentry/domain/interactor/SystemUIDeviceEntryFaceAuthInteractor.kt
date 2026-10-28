@@ -17,7 +17,10 @@
 package com.android.systemui.deviceentry.domain.interactor
 
 import android.app.trust.TrustManager
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.hardware.biometrics.BiometricFaceConstants
 import android.hardware.biometrics.BiometricSourceType
 import com.android.keyguard.KeyguardUpdateMonitor
@@ -106,6 +109,20 @@ constructor(
         //  its other dependencies. Once bypassEnabled state is available through a repository, we
         //  can break that cycle and inject this interactor directly into KeyguardUpdateMonitor
         keyguardUpdateMonitor.setFaceAuthInteractor(this)
+        // CubeOS: the Cube lock screen (CubeOS Home) covers the keyguard, which stops the usual
+        // scan triggers. It asks for a scan with this broadcast (senders need STATUS_BAR, so only
+        // system apps); the face sensor still decides the match, and a match on an occluded
+        // keyguard unlocks straight away (BiometricUnlockController MODE_UNLOCK_COLLAPSING).
+        context.registerReceiver(
+            object : BroadcastReceiver() {
+                override fun onReceive(c: Context, intent: Intent) =
+                    runFaceAuth(FaceAuthUiEvent.FACE_AUTH_TRIGGERED_OCCLUDING_APP_REQUESTED, false)
+            },
+            IntentFilter(ACTION_CUBE_REQUEST_FACE_AUTH),
+            android.Manifest.permission.STATUS_BAR,
+            null,
+            Context.RECEIVER_EXPORTED,
+        )
         observeFaceAuthStateUpdates()
         faceAuthenticationLogger.interactorStarted()
         isBouncerVisible
@@ -380,6 +397,9 @@ constructor(
     }
 
     companion object {
+        /** CubeOS Home asks for a face scan while its lock screen covers the keyguard. */
+        const val ACTION_CUBE_REQUEST_FACE_AUTH = "org.cubeapp.action.REQUEST_FACE_AUTH"
+
         const val TAG = "DeviceEntryFaceAuthInteractor"
     }
 }
