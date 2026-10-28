@@ -25,11 +25,12 @@
         <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
         <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
     </style>
+    <!-- CubeOS: "Enter Passcode" as iOS sets it - 20sp, regular weight, white. -->
     <style name="Keyguard.Bouncer.PrimaryMessage" parent="Theme.SystemUI">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:lineHeight">24dp</item>
-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
-        <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+        <item name="android:textColor">#FFFFFFFF</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAlignment">center</item>
         <item name="android:ellipsize">marquee</item>
@@ -43,11 +44,13 @@
         <item name="android:ellipsize">end</item>
         <item name="android:textColor">?androidprv:attr/materialColorOnSurfaceVariant</item>
     </style>
+    <!-- CubeOS: "Emergency" as iOS sets it - plain white words, no filled Material pill. -->
     <style name="Keyguard.TextView.EmergencyButton" parent="Theme.SystemUI">
-        <item name="android:textColor">?androidprv:attr/materialColorOnTertiaryFixed</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:background">@drawable/kg_emergency_button_background</item>
-        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
         <item name="android:paddingLeft">26dp</item>
         <item name="android:paddingRight">26dp</item>
         <item name="android:stateListAnimator">@null</item>

@@ -567,9 +567,18 @@ please see styles_device_defaults.xml.
     </style>
 
     <!-- Alert dialog button bar button -->
+    <!-- CubeOS: dialog themes inherit Material's alert style, so every system alert uses
+         alert_dialog_cube (iOS 26 capsule buttons); these are the buttons' type and size. -->
     <style name="Widget.Material.Button.ButtonBar.AlertDialog" parent="Widget.Material.Button.Borderless.Colored">
-        <item name="minWidth">@dimen/alert_dialog_button_bar_width</item>
-        <item name="minHeight">@dimen/alert_dialog_button_bar_height</item>
+        <item name="minWidth">0dp</item>
+        <item name="minHeight">48dp</item>
+        <item name="textAllCaps">false</item>
+        <item name="textSize">17sp</item>
+        <item name="gravity">center</item>
+        <item name="paddingStart">8dp</item>
+        <item name="paddingEnd">8dp</item>
+        <item name="paddingTop">11dp</item>
+        <item name="paddingBottom">11dp</item>
     </style>
 
     <!-- Small borderless ink button -->
@@ -1252,7 +1261,7 @@ please see styles_device_defaults.xml.
         <item name="bottomBright">@empty</item>
         <item name="bottomMedium">@empty</item>
         <item name="centerMedium">@empty</item>
-        <item name="layout">@layout/alert_dialog_material</item>
+        <item name="layout">@layout/alert_dialog_cube</item>
         <item name="listLayout">@layout/select_dialog_material</item>
         <item name="progressLayout">@layout/progress_dialog_material</item>
         <item name="horizontalProgressLayout">@layout/alert_dialog_progress_material</item>

@@ -241,131 +241,133 @@
     <!--Lightest shade of the Primary color used by the system. White. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_accent1_0">#FFFFFF</color>
     <!--Shade of the Primary system color at 99% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_10">#FEFBFF</color>
+    <color name="system_accent1_10">#F5F9FF</color>
     <!--Shade of the Primary system color at 95% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_50">#EEF0FF</color>
+    <color name="system_accent1_50">#E5F1FF</color>
     <!--Shade of the Primary system color at 90% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_100">#D9E2FF</color>
+    <color name="system_accent1_100">#CCE4FF</color>
     <!--Shade of the Primary system color at 80% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_200">#B0C6FF</color>
+    <color name="system_accent1_200">#99C9FF</color>
     <!--Shade of the Primary system color at 70% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_300">#94AAE4</color>
+    <color name="system_accent1_300">#66ADFF</color>
     <!--Shade of the Primary system color at 60% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_400">#7A90C8</color>
+    <color name="system_accent1_400">#3392FF</color>
     <!--Shade of the Primary system color at 50% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_500">#6076AC</color>
+    <color name="system_accent1_500">#0A84FF</color>
     <!--Shade of the Primary system color at 40% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_600">#475D92</color>
+    <color name="system_accent1_600">#007AFF</color>
     <!--Shade of the Primary system color at 30% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_700">#2F4578</color>
+    <color name="system_accent1_700">#0062CC</color>
     <!--Shade of the Primary system color at 20% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_800">#152E60</color>
+    <color name="system_accent1_800">#004999</color>
     <!--Shade of the Primary system color at 10% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent1_900">#001945</color>
+    <color name="system_accent1_900">#003166</color>
     <!--Darkest shade of the Primary color used by the system. Black. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_accent1_1000">#000000</color>
     <!--Lightest shade of the Secondary color used by the system. White. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_accent2_0">#FFFFFF</color>
     <!--Shade of the Secondary system color at 99% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_10">#FEFBFF</color>
+    <color name="system_accent2_10">#FBFBFD</color>
     <!--Shade of the Secondary system color at 95% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_50">#EEF0FF</color>
+    <color name="system_accent2_50">#F2F2F7</color>
     <!--Shade of the Secondary system color at 90% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_100">#DCE2F9</color>
+    <color name="system_accent2_100">#E5E5EA</color>
     <!--Shade of the Secondary system color at 80% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_200">#C0C6DC</color>
+    <color name="system_accent2_200">#D1D1D6</color>
     <!--Shade of the Secondary system color at 70% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_300">#A4ABC1</color>
+    <color name="system_accent2_300">#C7C7CC</color>
     <!--Shade of the Secondary system color at 60% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_400">#8A90A5</color>
+    <color name="system_accent2_400">#AEAEB2</color>
     <!--Shade of the Secondary system color at 50% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_500">#70778B</color>
+    <color name="system_accent2_500">#8E8E93</color>
     <!--Shade of the Secondary system color at 40% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_600">#575E71</color>
+    <color name="system_accent2_600">#636366</color>
     <!--Shade of the Secondary system color at 30% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_700">#404659</color>
+    <color name="system_accent2_700">#48484A</color>
     <!--Shade of the Secondary system color at 20% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_800">#2A3042</color>
+    <color name="system_accent2_800">#2C2C2E</color>
     <!--Shade of the Secondary system color at 10% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent2_900">#151B2C</color>
+    <color name="system_accent2_900">#1C1C1E</color>
     <!--Darkest shade of the Secondary color used by the system. Black. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_accent2_1000">#000000</color>
     <!--Lightest shade of the Tertiary color used by the system. White. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_accent3_0">#FFFFFF</color>
     <!--Shade of the Tertiary system color at 99% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_10">#FFFBFF</color>
+    <color name="system_accent3_10">#F3FCF5</color>
     <!--Shade of the Tertiary system color at 95% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_50">#FFEBFA</color>
+    <color name="system_accent3_50">#E3F8E8</color>
     <!--Shade of the Tertiary system color at 90% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_100">#FDD7FA</color>
+    <color name="system_accent3_100">#C6F1D1</color>
     <!--Shade of the Tertiary system color at 80% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_200">#E0BBDD</color>
+    <color name="system_accent3_200">#8DE3A3</color>
     <!--Shade of the Tertiary system color at 70% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_300">#C3A0C1</color>
+    <color name="system_accent3_300">#5ED67E</color>
     <!--Shade of the Tertiary system color at 60% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_400">#A886A6</color>
+    <color name="system_accent3_400">#30D158</color>
     <!--Shade of the Tertiary system color at 50% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_500">#8C6D8C</color>
+    <color name="system_accent3_500">#28B84C</color>
     <!--Shade of the Tertiary system color at 40% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_600">#725572</color>
+    <color name="system_accent3_600">#1F9A3E</color>
     <!--Shade of the Tertiary system color at 30% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_700">#593D59</color>
+    <color name="system_accent3_700">#177A31</color>
     <!--Shade of the Tertiary system color at 20% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_800">#412742</color>
+    <color name="system_accent3_800">#105A24</color>
     <!--Shade of the Tertiary system color at 10% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_accent3_900">#2A122C</color>
+    <color name="system_accent3_900">#0A3D19</color>
     <!--Darkest shade of the Tertiary color used by the system. Black. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_accent3_1000">#000000</color>
     <!--Lightest shade of the Neutral color used by the system. White. This value can be overlaid at runtime by OverlayManager RROs.-->
+    <!-- CubeOS: the iOS palette (system greys, iOS blue accent, green, red). SystemUI's
+         flag_monet is off, so these static values are what every app gets - no wallpaper tint. -->
     <color name="system_neutral1_0">#FFFFFF</color>
     <!--Shade of the Neutral system color at 99% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_10">#FEFBFF</color>
+    <color name="system_neutral1_10">#FBFBFD</color>
     <!--Shade of the Neutral system color at 95% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_50">#F1F0F7</color>
+    <color name="system_neutral1_50">#F2F2F7</color>
     <!--Shade of the Neutral system color at 90% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_100">#E2E2E9</color>
+    <color name="system_neutral1_100">#E5E5EA</color>
     <!--Shade of the Neutral system color at 80% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_200">#C6C6CD</color>
+    <color name="system_neutral1_200">#D1D1D6</color>
     <!--Shade of the Neutral system color at 70% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_300">#ABABB1</color>
+    <color name="system_neutral1_300">#C7C7CC</color>
     <!--Shade of the Neutral system color at 60% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_400">#909097</color>
+    <color name="system_neutral1_400">#AEAEB2</color>
     <!--Shade of the Neutral system color at 50% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_500">#76777D</color>
+    <color name="system_neutral1_500">#8E8E93</color>
     <!--Shade of the Neutral system color at 40% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_600">#5D5E64</color>
+    <color name="system_neutral1_600">#636366</color>
     <!--Shade of the Neutral system color at 30% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_700">#45464C</color>
+    <color name="system_neutral1_700">#48484A</color>
     <!--Shade of the Neutral system color at 20% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_800">#2F3036</color>
+    <color name="system_neutral1_800">#2C2C2E</color>
     <!--Shade of the Neutral system color at 10% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral1_900">#1A1B20</color>
+    <color name="system_neutral1_900">#1C1C1E</color>
     <!--Darkest shade of the Neutral color used by the system. Black. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_neutral1_1000">#000000</color>
     <!--Lightest shade of the Secondary Neutral color used by the system. White. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_neutral2_0">#FFFFFF</color>
     <!--Shade of the Secondary Neutral system color at 99% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_10">#FEFBFF</color>
+    <color name="system_neutral2_10">#FBFBFD</color>
     <!--Shade of the Secondary Neutral system color at 95% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_50">#F0F0FA</color>
+    <color name="system_neutral2_50">#F2F2F7</color>
     <!--Shade of the Secondary Neutral system color at 90% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_100">#E1E2EC</color>
+    <color name="system_neutral2_100">#E5E5EA</color>
     <!--Shade of the Secondary Neutral system color at 80% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_200">#C5C6D0</color>
+    <color name="system_neutral2_200">#D1D1D6</color>
     <!--Shade of the Secondary Neutral system color at 70% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_300">#A9ABB4</color>
+    <color name="system_neutral2_300">#C7C7CC</color>
     <!--Shade of the Secondary Neutral system color at 60% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_400">#8F9099</color>
+    <color name="system_neutral2_400">#AEAEB2</color>
     <!--Shade of the Secondary Neutral system color at 50% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_500">#757780</color>
+    <color name="system_neutral2_500">#8E8E93</color>
     <!--Shade of the Secondary Neutral system color at 40% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_600">#5C5E67</color>
+    <color name="system_neutral2_600">#636366</color>
     <!--Shade of the Secondary Neutral system color at 30% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_700">#44464F</color>
+    <color name="system_neutral2_700">#48484A</color>
     <!--Shade of the Secondary Neutral system color at 20% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_800">#2E3038</color>
+    <color name="system_neutral2_800">#2C2C2E</color>
     <!--Shade of the Secondary Neutral system color at 10% perceptual luminance (L* in L*a*b* color space). This value can be overlaid at runtime by OverlayManager RROs.-->
-    <color name="system_neutral2_900">#191B23</color>
+    <color name="system_neutral2_900">#1C1C1E</color>
     <!--Darkest shade of the Secondary Neutral color used by the system. Black. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_neutral2_1000">#000000</color>
     <!--Lightest shade of the Error color used by the system. White. This value can be overlaid at runtime by OverlayManager RROs.-->
@@ -395,101 +397,101 @@
     <!--Darkest shade of the Error color used by the system. Black. This value can be overlaid at runtime by OverlayManager RROs.-->
     <color name="system_error_1000">#000000</color>
 
-    <!--Colors used in Android system, from design system. These values can be overlaid at runtime by OverlayManager RROs.--><color name="system_background_light">#FAF8FF</color>
-    <color name="system_control_activated_light">#D9E2FF</color>
+    <!--Colors used in Android system, from design system. These values can be overlaid at runtime by OverlayManager RROs.--><color name="system_background_light">#F2F2F7</color>
+    <color name="system_control_activated_light">#007AFF</color>
     <color name="system_control_highlight_light">#000000</color>
-    <color name="system_control_normal_light">#44464F</color>
-    <color name="system_error_light">#BA1A1A</color>
+    <color name="system_control_normal_light">#8E8E93</color>
+    <color name="system_error_light">#FF3B30</color>
     <color name="system_error_container_light">#FFDAD6</color>
-    <color name="system_inverse_on_surface_light">#F1F0F7</color>
-    <color name="system_inverse_primary_light">#B0C6FF</color>
-    <color name="system_inverse_surface_light">#2F3036</color>
-    <color name="system_on_background_light">#1A1B20</color>
+    <color name="system_inverse_on_surface_light">#F2F2F7</color>
+    <color name="system_inverse_primary_light">#0A84FF</color>
+    <color name="system_inverse_surface_light">#2C2C2E</color>
+    <color name="system_on_background_light">#000000</color>
     <color name="system_on_error_light">#FFFFFF</color>
-    <color name="system_on_error_container_light">#93000A</color>
+    <color name="system_on_error_container_light">#410002</color>
     <color name="system_on_primary_light">#FFFFFF</color>
-    <color name="system_on_primary_container_light">#2F4578</color>
+    <color name="system_on_primary_container_light">#003A75</color>
     <color name="system_on_secondary_light">#FFFFFF</color>
-    <color name="system_on_secondary_container_light">#404659</color>
-    <color name="system_on_surface_light">#1A1B20</color>
-    <color name="system_on_surface_variant_light">#44464F</color>
+    <color name="system_on_secondary_container_light">#000000</color>
+    <color name="system_on_surface_light">#000000</color>
+    <color name="system_on_surface_variant_light">#6C6C70</color>
     <color name="system_on_tertiary_light">#FFFFFF</color>
-    <color name="system_on_tertiary_container_light">#593D59</color>
-    <color name="system_outline_light">#757780</color>
-    <color name="system_outline_variant_light">#C5C6D0</color>
+    <color name="system_on_tertiary_container_light">#0A3D19</color>
+    <color name="system_outline_light">#C6C6C8</color>
+    <color name="system_outline_variant_light">#D1D1D6</color>
     <color name="system_palette_key_color_neutral_light">#76777D</color>
     <color name="system_palette_key_color_neutral_variant_light">#757780</color>
     <color name="system_palette_key_color_primary_light">#6076AC</color>
     <color name="system_palette_key_color_secondary_light">#70778B</color>
     <color name="system_palette_key_color_tertiary_light">#8C6D8C</color>
-    <color name="system_primary_light">#475D92</color>
-    <color name="system_primary_container_light">#D9E2FF</color>
+    <color name="system_primary_light">#007AFF</color>
+    <color name="system_primary_container_light">#D6E9FF</color>
     <color name="system_scrim_light">#000000</color>
-    <color name="system_secondary_light">#575E71</color>
-    <color name="system_secondary_container_light">#DCE2F9</color>
+    <color name="system_secondary_light">#8E8E93</color>
+    <color name="system_secondary_container_light">#E5E5EA</color>
     <color name="system_shadow_light">#000000</color>
-    <color name="system_surface_light">#FAF8FF</color>
-    <color name="system_surface_bright_light">#FAF8FF</color>
-    <color name="system_surface_container_light">#EEEDF4</color>
-    <color name="system_surface_container_high_light">#E8E7EF</color>
-    <color name="system_surface_container_highest_light">#E2E2E9</color>
-    <color name="system_surface_container_low_light">#F4F3FA</color>
+    <color name="system_surface_light">#F2F2F7</color>
+    <color name="system_surface_bright_light">#FFFFFF</color>
+    <color name="system_surface_container_light">#FFFFFF</color>
+    <color name="system_surface_container_high_light">#FFFFFF</color>
+    <color name="system_surface_container_highest_light">#E5E5EA</color>
+    <color name="system_surface_container_low_light">#FFFFFF</color>
     <color name="system_surface_container_lowest_light">#FFFFFF</color>
-    <color name="system_surface_dim_light">#DAD9E0</color>
-    <color name="system_surface_tint_light">#475D92</color>
-    <color name="system_surface_variant_light">#E1E2EC</color>
-    <color name="system_tertiary_light">#725572</color>
-    <color name="system_tertiary_container_light">#FDD7FA</color>
+    <color name="system_surface_dim_light">#E5E5EA</color>
+    <color name="system_surface_tint_light">#007AFF</color>
+    <color name="system_surface_variant_light">#E5E5EA</color>
+    <color name="system_tertiary_light">#34C759</color>
+    <color name="system_tertiary_container_light">#D4F5DD</color>
     <color name="system_text_hint_inverse_light">#E2E2E9</color>
     <color name="system_text_primary_inverse_light">#E2E2E9</color>
     <color name="system_text_primary_inverse_disable_only_light">#E2E2E9</color>
     <color name="system_text_secondary_and_tertiary_inverse_light">#C5C6D0</color>
     <color name="system_text_secondary_and_tertiary_inverse_disabled_light">#E2E2E9</color>
-    <color name="system_background_dark">#121318</color>
-    <color name="system_control_activated_dark">#2F4578</color>
+    <color name="system_background_dark">#000000</color>
+    <color name="system_control_activated_dark">#0A84FF</color>
     <color name="system_control_highlight_dark">#FFFFFF</color>
-    <color name="system_control_normal_dark">#C5C6D0</color>
-    <color name="system_error_dark">#FFB4AB</color>
-    <color name="system_error_container_dark">#93000A</color>
-    <color name="system_inverse_on_surface_dark">#2F3036</color>
-    <color name="system_inverse_primary_dark">#475D92</color>
-    <color name="system_inverse_surface_dark">#E2E2E9</color>
-    <color name="system_on_background_dark">#E2E2E9</color>
-    <color name="system_on_error_dark">#690005</color>
+    <color name="system_control_normal_dark">#8E8E93</color>
+    <color name="system_error_dark">#FF453A</color>
+    <color name="system_error_container_dark">#5C1A16</color>
+    <color name="system_inverse_on_surface_dark">#1C1C1E</color>
+    <color name="system_inverse_primary_dark">#007AFF</color>
+    <color name="system_inverse_surface_dark">#E5E5EA</color>
+    <color name="system_on_background_dark">#FFFFFF</color>
+    <color name="system_on_error_dark">#FFFFFF</color>
     <color name="system_on_error_container_dark">#FFDAD6</color>
-    <color name="system_on_primary_dark">#152E60</color>
-    <color name="system_on_primary_container_dark">#D9E2FF</color>
-    <color name="system_on_secondary_dark">#2A3042</color>
-    <color name="system_on_secondary_container_dark">#DCE2F9</color>
-    <color name="system_on_surface_dark">#E2E2E9</color>
-    <color name="system_on_surface_variant_dark">#C5C6D0</color>
-    <color name="system_on_tertiary_dark">#412742</color>
-    <color name="system_on_tertiary_container_dark">#FDD7FA</color>
-    <color name="system_outline_dark">#8F9099</color>
-    <color name="system_outline_variant_dark">#44464F</color>
+    <color name="system_on_primary_dark">#FFFFFF</color>
+    <color name="system_on_primary_container_dark">#D6E9FF</color>
+    <color name="system_on_secondary_dark">#000000</color>
+    <color name="system_on_secondary_container_dark">#FFFFFF</color>
+    <color name="system_on_surface_dark">#FFFFFF</color>
+    <color name="system_on_surface_variant_dark">#98989F</color>
+    <color name="system_on_tertiary_dark">#003914</color>
+    <color name="system_on_tertiary_container_dark">#B6F2C4</color>
+    <color name="system_outline_dark">#48484A</color>
+    <color name="system_outline_variant_dark">#38383A</color>
     <color name="system_palette_key_color_neutral_dark">#76777D</color>
     <color name="system_palette_key_color_neutral_variant_dark">#757780</color>
     <color name="system_palette_key_color_primary_dark">#6076AC</color>
     <color name="system_palette_key_color_secondary_dark">#70778B</color>
     <color name="system_palette_key_color_tertiary_dark">#8C6D8C</color>
-    <color name="system_primary_dark">#B0C6FF</color>
-    <color name="system_primary_container_dark">#2F4578</color>
+    <color name="system_primary_dark">#0A84FF</color>
+    <color name="system_primary_container_dark">#12305A</color>
     <color name="system_scrim_dark">#000000</color>
-    <color name="system_secondary_dark">#C0C6DC</color>
-    <color name="system_secondary_container_dark">#404659</color>
+    <color name="system_secondary_dark">#8E8E93</color>
+    <color name="system_secondary_container_dark">#2C2C2E</color>
     <color name="system_shadow_dark">#000000</color>
-    <color name="system_surface_dark">#121318</color>
-    <color name="system_surface_bright_dark">#38393F</color>
-    <color name="system_surface_container_dark">#1E1F25</color>
-    <color name="system_surface_container_high_dark">#282A2F</color>
-    <color name="system_surface_container_highest_dark">#33343A</color>
-    <color name="system_surface_container_low_dark">#1A1B20</color>
-    <color name="system_surface_container_lowest_dark">#0C0E13</color>
-    <color name="system_surface_dim_dark">#121318</color>
-    <color name="system_surface_tint_dark">#B0C6FF</color>
-    <color name="system_surface_variant_dark">#44464F</color>
-    <color name="system_tertiary_dark">#E0BBDD</color>
-    <color name="system_tertiary_container_dark">#593D59</color>
+    <color name="system_surface_dark">#000000</color>
+    <color name="system_surface_bright_dark">#2C2C2E</color>
+    <color name="system_surface_container_dark">#1C1C1E</color>
+    <color name="system_surface_container_high_dark">#2C2C2E</color>
+    <color name="system_surface_container_highest_dark">#3A3A3C</color>
+    <color name="system_surface_container_low_dark">#1C1C1E</color>
+    <color name="system_surface_container_lowest_dark">#000000</color>
+    <color name="system_surface_dim_dark">#000000</color>
+    <color name="system_surface_tint_dark">#0A84FF</color>
+    <color name="system_surface_variant_dark">#2C2C2E</color>
+    <color name="system_tertiary_dark">#30D158</color>
+    <color name="system_tertiary_container_dark">#0F3D1E</color>
     <color name="system_text_hint_inverse_dark">#1A1B20</color>
     <color name="system_text_primary_inverse_dark">#1A1B20</color>
     <color name="system_text_primary_inverse_disable_only_dark">#1A1B20</color>

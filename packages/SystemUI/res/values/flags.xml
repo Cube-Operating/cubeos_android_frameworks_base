@@ -18,7 +18,9 @@
 <resources>
     <bool name="are_flags_overrideable">false</bool>
 
-    <bool name="flag_monet">true</bool>
+    <!-- CubeOS: no Material You colours from the wallpaper; the framework's static palette is
+         the iOS one (system greys, iOS blue, green, red - core/res values/colors.xml). -->
+    <bool name="flag_monet">false</bool>
 
     <!-- People Tile flag -->
     <bool name="flag_conversations">false</bool>

@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: an empty passcode position - a thin ring the same size as the filled dot
+     (cube_pin_dot_fill_avd), as iOS draws it. Same structure/names as AOSP's (time_group). -->
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
@@ -7,19 +10,12 @@
             android:viewportHeight="30"
             android:viewportWidth="30">
             <group android:name="_R_G">
-                <group
-                    android:name="_R_G_L_0_G"
-                    android:translateX="28.237000000000002"
-                    android:translateY="23.112000000000002">
-                    <path
-                        android:name="_R_G_L_0_G_D_0_P_0"
-                        android:strokeColor="#ffffff"
-                        android:strokeLineCap="round"
-                        android:strokeLineJoin="round"
-                        android:strokeWidth="2"
-                        android:strokeAlpha="1"
-                        android:pathData=" M-13.24 -12.11 C-11.03,-12.11 -9.24,-10.32 -9.24,-8.11 C-9.24,-5.9 -11.03,-4.11 -13.24,-4.11 C-15.44,-4.11 -17.24,-5.9 -17.24,-8.11 C-17.24,-10.32 -15.44,-12.11 -13.24,-12.11c " />
-                </group>
+                <path
+                    android:name="_R_G_L_0_G_D_0_P_0"
+                    android:strokeColor="#ffffff"
+                    android:strokeWidth="1.2"
+                    android:strokeAlpha="0.9"
+                    android:pathData="M15 9.6 A5.4 5.4 0 1 1 14.99 9.6 Z" />
             </group>
             <group android:name="time_group" />
         </vector>
