@@ -44,9 +44,17 @@ object CredentialPasswordViewBinder {
             val header = viewModel.header.first()
             passwordField.setTextOperationUser(UserHandle.of(header.user.userIdForPasswordEntry))
             viewModel.inputFlags.firstOrNull()?.let { flags -> passwordField.inputType = flags }
+            // CubeOS: a PIN is typed on the on-screen CubeOS keypad (R.id.pin_pad), so the IME
+            // stays hidden for it; the field still takes focus for a hardware keyboard.
+            val pinPadView = view.findViewById(R.id.pin_pad) as? IPinPad
+            if (pinPadView != null) {
+                passwordField.showSoftInputOnFocus = false
+            }
             if (requestFocusForInput) {
                 passwordField.requestFocus()
-                passwordField.scheduleShowSoftInput()
+                if (pinPadView == null) {
+                    passwordField.scheduleShowSoftInput()
+                }
             }
             passwordField.setOnEditorActionListener(
                 OnImeSubmitListener { text ->
@@ -54,7 +62,6 @@ object CredentialPasswordViewBinder {
                 }
             )
             passwordField.setOnKeyListener(OnBackButtonListener(onBackInvokedCallback))
-            val pinPadView = view.findViewById(R.id.pin_pad) as? IPinPad
             if (pinPadView != null) {
                 PinPadViewBinder.bind(pinPadView, view)
             }

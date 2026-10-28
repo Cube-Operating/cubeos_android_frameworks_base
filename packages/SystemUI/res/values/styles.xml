@@ -252,7 +252,7 @@
         <item name="android:textFontWeight">600</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:focusable">true</item>
-        <item name="android:textColor">?androidprv:attr/materialColorOnSurface</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.AuthNonBioCredential.Subtitle">
@@ -260,7 +260,7 @@
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:textColor">?androidprv:attr/materialColorOnSurfaceVariant</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
     <style name="TextAppearance.AuthNonBioCredential.Description">
@@ -268,7 +268,7 @@
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:textColor">?androidprv:attr/materialColorOnSurfaceVariant</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
     <style name="TextAppearance.AuthNonBioCredential.Error">
@@ -285,26 +285,29 @@
         <item name="android:gravity">start</item>
     </style>
 
+    <!-- CubeOS: the iOS password field - a 52dp rounded fill, centred 17sp text, accent cursor. -->
     <style name="TextAppearance.AuthNonBioCredential.PasswordEntry" parent="@android:style/TextAppearance.DeviceDefault">
         <item name="android:gravity">center</item>
-        <item name="android:paddingTop">28dp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textColor">?android:attr/colorForeground</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColorHint">?android:attr/textColorHint</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:background">@drawable/auth_credential_cube_field</item>
     </style>
 
     <style name="AuthNonBioCredentialHeaderStyle">
         <item name="android:paddingStart">32dp</item>
         <item name="android:paddingEnd">32dp</item>
-        <item name="android:paddingTop">72dp</item>
+        <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:layout_gravity">top</item>
     </style>
 
+    <!-- CubeOS: the asking app's icon, small, above the title. -->
     <style name="AuthNonBioCredentialIconStyle">
-        <item name="android:layout_width">@dimen/biometric_auth_icon_size</item>
-        <item name="android:layout_height">@dimen/biometric_auth_icon_size</item>
+        <item name="android:layout_width">@dimen/cube_auth_header_icon_size</item>
+        <item name="android:layout_height">@dimen/cube_auth_header_icon_size</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 
     <style name="AuthNonBioCredentialPatternContainerStyle">
@@ -325,14 +328,19 @@
         <item name="android:minWidth">200dp</item>
     </style>
 
+    <!-- CubeOS: "Emergency call" as plain text, as the bouncer draws it (was a filled pill). -->
     <style name="AuthNonBioCredentialEmergencyButtonStyle">
-        <item name="android:background">@drawable/auth_credential_emergency_button_background</item>
-        <item name="android:textColor">@android:color/system_accent3_900</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:outlineProvider">none</item>
-        <item name="android:paddingTop">15dp</item>
-        <item name="android:paddingBottom">15dp</item>
-        <item name="android:paddingLeft">30dp</item>
-        <item name="android:paddingRight">30dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -457,7 +465,18 @@
         <item name="android:textColor">?attr/wallpaperTextColor</item>
     </style>
 
+    <!-- CubeOS: theme overlay of the credential sheet. The sheet is a black panel in light and
+         dark mode alike (like the bouncer), so the text/accent colours are fixed to the dark set. -->
     <style name="AuthNonBioCredentialStyle">
+        <item name="android:textColorPrimary">@color/cube_auth_label</item>
+        <item name="android:textColorSecondary">@color/cube_auth_secondary_label</item>
+        <item name="android:textColorHint">@color/cube_auth_tertiary_label</item>
+        <item name="android:colorForeground">@color/cube_auth_label</item>
+        <item name="android:colorAccent">@color/cube_auth_accent</item>
+        <item name="android:colorControlActivated">@color/cube_auth_accent</item>
+        <item name="android:colorControlHighlight">@color/cube_auth_highlight</item>
+        <item name="android:textColorHighlight">#660A84FF</item>
+        <item name="android:colorError">@color/cube_auth_destructive</item>
         <item name="*android:regularColor">?android:attr/colorForeground</item>
         <item name="*android:successColor">?android:attr/colorForeground</item>
         <item name="*android:errorColor">?android:attr/colorError</item>
