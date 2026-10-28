@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: the iOS accent for AppCompat alerts. AppCompat's dialog theme otherwise falls back
+     to Material teal (accent_material_light/dark), which showed on "Allow" in light mode. -->
+<resources>
+    <color name="settingslib_cube_alert_accent">@android:color/system_accent1_600</color>
+</resources>

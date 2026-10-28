@@ -48,7 +48,8 @@
     <style name="Theme.AlertDialog.SettingsLib" parent="@style/Theme.AppCompat.DayNight.Dialog.Alert">
         <!-- CubeOS: AppCompat alerts in the iOS 26 style (settingslib_cube_alert_dialog). -->
         <item name="alertDialogStyle">@style/AlertDialog.SettingsLib.Cube</item>
-        <item name="colorAccent">@color/settingslib_dialog_accent</item>
+        <item name="colorAccent">@color/settingslib_cube_alert_accent</item>
+        <item name="android:colorAccent">@color/settingslib_cube_alert_accent</item>
         <item name="android:colorError">@color/settingslib_dialog_colorError</item>
         <item name="android:colorBackground">@color/settingslib_dialog_background</item>
 
