@@ -47,4 +47,8 @@
         <item name="android:ellipsize">marquee</item>
     </style>
 
+    <!-- CubeOS: iOS 26 alerts for AppCompat dialogs (stock Settings and SettingsLib apps). -->
+    <style name="AlertDialog.SettingsLib.Cube" parent="AlertDialog.AppCompat">
+        <item name="android:layout">@layout/settingslib_cube_alert_dialog</item>
+    </style>
 </resources>

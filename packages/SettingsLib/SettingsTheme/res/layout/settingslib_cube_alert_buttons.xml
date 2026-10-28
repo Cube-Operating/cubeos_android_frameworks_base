@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CubeOS: iOS 26 alert buttons for AppCompat - capsules side by side, the main one solid.
+     Same ids as abc_alert_dialog_button_bar_material; no stacking (it reverses children). -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/buttonPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollIndicators="top|bottom">
+    <androidx.appcompat.widget.ButtonBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="locale"
+        android:orientation="horizontal"
+        app:allowStacking="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="16dp"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@android:id/button3"
+            style="?attr/buttonBarNeutralButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:minHeight="48dp"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            android:background="@drawable/settingslib_cube_alert_button_bg"
+            android:textColor="?android:attr/textColorPrimary" />
+        <Button
+            android:id="@android:id/button2"
+            style="?attr/buttonBarNegativeButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:minHeight="48dp"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            android:background="@drawable/settingslib_cube_alert_button_bg"
+            android:textColor="?android:attr/textColorPrimary" />
+        <Button
+            android:id="@android:id/button1"
+            style="?attr/buttonBarPositiveButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:minHeight="48dp"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            android:textFontWeight="600"
+            android:background="@drawable/settingslib_cube_alert_button_primary_bg"
+            android:textColor="#FFFFFFFF" />
+    </androidx.appcompat.widget.ButtonBarLayout>
+</ScrollView>
