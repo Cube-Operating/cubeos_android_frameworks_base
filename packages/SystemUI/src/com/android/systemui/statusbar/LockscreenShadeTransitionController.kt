@@ -286,6 +286,8 @@ constructor(
 
     /** @return true if the interaction is accepted, false if it should be cancelled */
     internal fun canDragDown(): Boolean {
+        // CubeOS: not while the shade is switched off (Cube Home owns the pull-down).
+        if (!shadeInteractor.isShadeEnabled.value) return false
         return (statusBarStateController.state == StatusBarState.KEYGUARD ||
             nsslController.isInLockedDownShade()) && (isQsFullyCollapsed || useSplitShade)
     }
@@ -400,7 +402,11 @@ constructor(
     /** @return if drag down is enabled anywhere, not just on selected views. */
     internal val isDragDownAnywhereEnabled: Boolean
         get() =
-            (statusBarStateController.getState() == StatusBarState.KEYGUARD &&
+            // CubeOS: a pull on the lock screen opens nothing while the shade is switched off
+            // (Cube Home owns the pull-down); without this the stock QS and cards followed the
+            // finger before the drag was cancelled.
+            (shadeInteractor.isShadeEnabled.value &&
+                statusBarStateController.getState() == StatusBarState.KEYGUARD &&
                 !keyguardBypassController.bypassEnabled &&
                 (isQsFullyCollapsed || useSplitShade))
 

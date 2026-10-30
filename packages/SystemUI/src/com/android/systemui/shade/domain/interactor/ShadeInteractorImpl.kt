@@ -60,9 +60,13 @@ constructor(
     ShadeInteractor,
     BaseShadeInteractor by baseShadeInteractor,
     ShadeModeInteractor by shadeModeInteractor {
+    // CubeOS: DISABLE_EXPAND holds on the lock screen too (pull-down to the locked shade, QS from
+    // the keyguard's top edge), as CommandQueue.panelsEnabled() already makes it everywhere else.
+    // Cube Home sets it while its own Notification and Control Centers own the pull-down; before
+    // this the stock keyguard shade still opened by a pull, e.g. before the first unlock.
     override val isShadeEnabled: StateFlow<Boolean> =
         disableFlagsInteractor.disableFlags
-            .map { it.isShadeEnabled() }
+            .map { it.isShadeEnabled() && it.isExpandEnabled() }
             .flowName("isShadeEnabled")
             .stateIn(scope, SharingStarted.Eagerly, initialValue = false)
 

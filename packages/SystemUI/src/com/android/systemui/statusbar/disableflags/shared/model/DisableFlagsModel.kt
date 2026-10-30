@@ -21,6 +21,7 @@ import android.app.StatusBarManager.DISABLE2_NOTIFICATION_SHADE
 import android.app.StatusBarManager.DISABLE2_QUICK_SETTINGS
 import android.app.StatusBarManager.DISABLE2_SYSTEM_ICONS
 import android.app.StatusBarManager.DISABLE_CLOCK
+import android.app.StatusBarManager.DISABLE_EXPAND
 import android.app.StatusBarManager.DISABLE_NONE
 import android.app.StatusBarManager.DISABLE_NOTIFICATION_ALERTS
 import android.app.StatusBarManager.DISABLE_NOTIFICATION_ICONS
@@ -50,6 +51,15 @@ data class DisableFlagsModel(
     /** Returns true if the shade is allowed based on the flags. */
     fun isShadeEnabled(): Boolean {
         return (disable2 and DISABLE2_NOTIFICATION_SHADE) == 0
+    }
+
+    /**
+     * CubeOS: returns true unless an app has switched off pulling the shade down (DISABLE_EXPAND).
+     * Cube Home's control service holds that flag while it draws the Notification and Control
+     * Centers; the record dies with its process, so the stock shade comes back if it stops.
+     */
+    fun isExpandEnabled(): Boolean {
+        return (disable1 and DISABLE_EXPAND) == 0
     }
 
     /** Returns true if full quick settings are allowed based on the flags. */
