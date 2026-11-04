@@ -93,6 +93,18 @@ public class OemLockService extends SystemService {
         publishBinderService(Context.OEM_LOCK_SERVICE, mService);
     }
 
+    @Override
+    public void onBootPhase(int phase) {
+        // CubeOS: OEM unlocking needs a CubeOS unlock code (CubeOemUnlock); close the gate at boot.
+        if (phase == PHASE_ACTIVITY_MANAGER_READY && mOemLock instanceof PersistentDataBlockLock) {
+            try {
+                ((PersistentDataBlockLock) mOemLock).applyCubeOsPolicy();
+            } catch (RuntimeException e) {
+                Slog.w(TAG, "CubeOS OEM unlock policy", e);
+            }
+        }
+    }
+
     private final UserRestrictionsListener mUserRestrictionsListener =
             new UserRestrictionsListener() {
         @Override

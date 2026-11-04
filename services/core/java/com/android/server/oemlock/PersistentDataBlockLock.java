@@ -47,9 +47,14 @@ class PersistentDataBlockLock extends OemLock {
 
     @Override
     void setOemUnlockAllowedByCarrier(boolean allowed, @Nullable byte[] signature) {
-        // Note: this implementation does not require a signature
-        if (signature != null) {
-            Slog.w(TAG, "Signature provided but is not being used");
+        // CubeOS: opening the gate needs this phone's CubeOS unlock code (CubeOemUnlock).
+        if (allowed) {
+            if (!CubeOemUnlock.verify(mContext, signature)) {
+                throw new SecurityException("OEM unlocking needs a CubeOS unlock code for this phone");
+            }
+            CubeOemUnlock.store(signature);
+        } else {
+            CubeOemUnlock.forget();
         }
 
         // Continue using user restriction for backwards compatibility
@@ -57,6 +62,20 @@ class PersistentDataBlockLock extends OemLock {
                 UserManager.DISALLOW_OEM_UNLOCK, !allowed, UserHandle.SYSTEM);
 
         if (!allowed) {
+            disallowUnlockIfNotUnlocked();
+        }
+    }
+
+    /**
+     * CubeOS, at every boot: the carrier gate is closed (and the bootloader may not unlock)
+     * unless this phone's CubeOS unlock code was accepted on this data.
+     */
+    void applyCubeOsPolicy() {
+        if (CubeOemUnlock.accepted(mContext)) return;
+        if (isOemUnlockAllowedByCarrier() || isOemUnlockAllowedByDevice()) {
+            Slog.i(TAG, "CubeOS: OEM unlocking needs an unlock code");
+            UserManager.get(mContext).setUserRestriction(
+                    UserManager.DISALLOW_OEM_UNLOCK, true, UserHandle.SYSTEM);
             disallowUnlockIfNotUnlocked();
         }
     }
