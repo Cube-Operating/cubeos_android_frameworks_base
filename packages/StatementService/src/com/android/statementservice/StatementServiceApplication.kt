@@ -18,10 +18,19 @@ package com.android.statementservice
 
 import android.app.Application
 import android.os.UserManager
+import androidx.work.Configuration
 import androidx.work.WorkManager
 import com.android.statementservice.domain.DomainVerificationUtils
 
-class StatementServiceApplication : Application() {
+class StatementServiceApplication : Application(), Configuration.Provider {
+
+    // CubeOS: the v2 receiver is enabled and direct-boot aware, so this process can start
+    // before the user unlocks. Its content providers (androidx.startup's WorkManager
+    // initializer) aren't installed in that case, and the first DOMAINS_NEED_VERIFICATION
+    // after unlock crashed with "WorkManager is not initialized". As a Configuration.Provider
+    // the app lets WorkManager.getInstance() initialize on demand instead.
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder().build()
 
     override fun onCreate() {
         super.onCreate()
